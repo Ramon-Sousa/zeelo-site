@@ -134,7 +134,7 @@ function Navbar() {
         <a href="#" className="flex items-center shrink-0">
           <div className="relative h-8 w-[128px]">
             <Image
-              src="/images/logo-2x1.png"
+              src="/images/logo-2x1-brand.png"
               alt="Zeelo"
               fill
               className="object-contain object-left"
@@ -654,13 +654,12 @@ function PricingSection() {
     "Controle de finanças e evolução do enxoval",
     "Quadro dos sonhos",
     "Adicione +1 perfil na sua conta",
-    "Acesso Imediato e Vitalício",
   ];
 
   return (
     <section id="preco" className="relative bg-white py-12 md:py-16 lg:py-[72px] overflow-hidden">
       {/* BG Image */}
-      <div className="absolute inset-0 pointer-events-none">
+      <div className="absolute inset-0 pointer-events-none" aria-hidden="true">
         <Image
           src="/images/cta-bg.png"
           alt=""
@@ -672,9 +671,9 @@ function PricingSection() {
 
       <div className="max-w-[1440px] mx-auto px-5 md:px-10 lg:px-24 xl:px-32 relative z-10">
         <AnimatedSection>
-          <div className="bg-bg-gray rounded-[16px] p-5 md:p-10 lg:p-14 overflow-hidden relative">
+          <div className="bg-bg-gray rounded-[16px] p-5 md:p-8 lg:p-14 overflow-hidden relative">
             {/* Decorative patterns */}
-            <div className="absolute bottom-0 left-0 w-[300px] lg:w-[599px] h-[280px] lg:h-[555px] opacity-10 pointer-events-none">
+            <div className="absolute bottom-0 left-0 w-[300px] lg:w-[599px] h-[280px] lg:h-[555px] opacity-10 pointer-events-none" aria-hidden="true">
               <Image
                 src="/images/pattern-bg.png"
                 alt=""
@@ -682,7 +681,7 @@ function PricingSection() {
                 className="object-cover"
               />
             </div>
-            <div className="absolute top-0 right-0 w-[300px] lg:w-[599px] h-[280px] lg:h-[555px] opacity-10 rotate-180 pointer-events-none">
+            <div className="absolute top-0 right-0 w-[300px] lg:w-[599px] h-[280px] lg:h-[555px] opacity-10 rotate-180 pointer-events-none" aria-hidden="true">
               <Image
                 src="/images/pattern-bg.png"
                 alt=""
@@ -691,78 +690,189 @@ function PricingSection() {
               />
             </div>
 
-            <div className="flex flex-col lg:flex-row gap-10 lg:gap-20 items-center justify-center relative z-10">
-              {/* Benefits */}
-              <div className="lg:w-[685px]">
-                <h2 className="font-heading font-bold text-primary text-[28px] sm:text-[32px] md:text-[38px] leading-none">
-                  Garanta o Zeelo com acesso vitalício
+            <div className="flex flex-col gap-10 items-center justify-center relative z-10 w-full mb-10 lg:mb-14">
+              <div className="text-center justify-center flex flex-col items-center">
+                <h2 className="font-heading font-bold text-primary text-[28px] sm:text-[32px] md:text-[40px] leading-[1.2]">
+                  Garanta o Zeelo e comece a organizar<br className="hidden md:block"/> seu enxoval hoje mesmo
                 </h2>
-                <p className="font-body font-light text-text-body text-lg md:text-xl leading-[1.5] mt-2">
+                <p className="font-body font-light text-text-body text-lg md:text-xl leading-[1.5] mt-4 max-w-[650px]">
                   Todo seu enxoval reunido em um só lugar de forma prática para
                   não se preocupar com nada além da decoração.
                 </p>
-
-                <div className="flex flex-col gap-4 mt-6">
-                  {benefits.map((b, i) => (
-                    <AnimatedSection
-                      key={b}
-                      delay={i * 60}
-                      className="flex items-center gap-3"
-                    >
-                      <Image
-                        src="/images/icon-check.svg"
-                        alt=""
-                        width={20}
-                        height={20}
-                        className="shrink-0"
-                      />
-                      <span className="font-body font-light text-text-body text-base md:text-xl leading-[1.5]">
-                        {b}
-                      </span>
-                    </AnimatedSection>
-                  ))}
-                </div>
               </div>
+            </div>
 
-              {/* Pricing Card */}
+            <div className="flex flex-col lg:flex-row gap-8 lg:gap-10 items-stretch justify-center relative z-10 max-w-5xl mx-auto">
+              
+              {/* Annual Plan Card */}
               <AnimatedSection
-                delay={200}
-                className="w-full max-w-[440px] bg-white rounded-[16px] p-6 md:p-8 flex flex-col justify-between min-h-[416px]"
+                delay={100}
+                className="flex-1 w-full max-w-[440px] mx-auto bg-white rounded-[16px] p-6 md:p-8 flex flex-col justify-between border border-border mt-0 lg:mt-6 shadow-sm hover:shadow-md transition-shadow duration-300 focus-within:ring-2 focus-within:ring-primary focus-within:ring-offset-4"
               >
                 <div>
-                  <p className="font-body font-light text-text-body text-lg md:text-xl uppercase leading-[1.5]">
-                    Oferta por tempo limitado
-                  </p>
-                  <div className="flex items-center gap-4 md:gap-6 mt-2 flex-wrap">
-                    <span className="font-heading font-bold text-primary text-[48px] sm:text-[60px] md:text-[73px] leading-none">
+                  <h3 className="font-body font-bold text-text-body text-lg md:text-xl uppercase leading-[1.5]">
+                    Plano Anual
+                  </h3>
+                  <div className="flex items-center gap-3 mt-2 flex-wrap" aria-label="Preço: R$47,90. Preço original: R$110,00">
+                    <span className="font-heading font-bold text-primary text-[42px] sm:text-[52px] leading-none" aria-hidden="true">
                       R$47,90
                     </span>
-                    <span className="font-body font-light text-text-body text-lg md:text-xl line-through uppercase">
+                    <span className="font-body font-medium text-text-body/60 text-base md:text-lg line-through uppercase mt-2" aria-hidden="true">
                       R$110,00
                     </span>
                   </div>
-                  <p className="font-body font-light text-text-body text-base md:text-xl leading-[1.5] mt-2">
-                    Em até 6X &bull; Acesso Imediato
+                  <p className="font-body font-medium text-text-body text-sm md:text-base leading-[1.5] mt-2">
+                    Cerca de R$ 3,99 por mês &bull; Acesso por 1 ano
                   </p>
+                  
+                  <ul className="flex flex-col gap-4 mt-8" aria-label="Benefícios do plano anual">
+                    {benefits.map((b) => (
+                      <li key={b} className="flex items-start gap-3">
+                        <Image
+                          src="/images/icon-check.svg"
+                          alt=""
+                          width={22}
+                          height={22}
+                          className="shrink-0 mt-0.5"
+                          aria-hidden="true"
+                        />
+                        <span className="font-body font-medium text-text-body text-[15px] leading-[1.4]">
+                          {b}
+                        </span>
+                      </li>
+                    ))}
+                    <li className="flex items-start gap-3 opacity-60">
+                        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" className="shrink-0 mt-0.5 text-[#888]" aria-hidden="true"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg>
+                        <span className="font-body font-medium text-text-body text-[15px] leading-[1.4] line-through">
+                          <span className="sr-only">Desvantagem: Não possui </span>Acesso vitalício
+                        </span>
+                    </li>
+                  </ul>
                 </div>
 
-                <CTAButton href={OFFER_LINK} className="w-full mt-8">
-                  COMPRAR AGORA
-                </CTAButton>
-
-                <div className="flex items-center gap-3 mt-6">
-                  <div className="flex -space-x-3">
-                    {[1, 0.8, 0.6, 0.3].map((opacity, i) => (
-                      <div
-                        key={i}
-                        className="w-10 h-10 rounded-full bg-[#160000] border-2 border-white"
-                        style={{ opacity }}
+                <div className="mt-8">
+                  <a 
+                    href="https://pay.cakto.com.br/334sty9" 
+                    className="group inline-flex items-center justify-center gap-3 bg-primary text-[#fafafa] rounded-[4px] font-body font-semibold transition-all duration-300 hover:brightness-110 active:scale-[0.98] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 w-full h-[52px] px-6 text-[15.8px]"
+                    aria-label="Assinar Plano Anual por R$47,90"
+                  >
+                    ASSINAR ANUAL
+                    <svg
+                      width="20"
+                      height="20"
+                      viewBox="0 0 20 20"
+                      fill="none"
+                      className="transition-transform duration-300 group-hover:translate-x-1"
+                      aria-hidden="true"
+                    >
+                      <path
+                        d="M4.167 10h11.666M10.833 5l5 5-5 5"
+                        stroke="currentColor"
+                        strokeWidth="1.5"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
                       />
-                    ))}
+                    </svg>
+                  </a>
+
+                  <div className="flex items-center justify-center gap-2 mt-4 text-text-body/70">
+                      <p className="font-body font-medium text-[13px] text-center">
+                        Mais de 3.550+ clientes.
+                      </p>
                   </div>
-                  <p className="font-body font-light text-primary text-sm md:text-base leading-[1.5] flex-1">
-                    Junte-se aos 3.550+ clientes satisfeitos.
-                  </p>
+                </div>
+              </AnimatedSection>
+
+              {/* Lifetime Plan Card */}
+              <AnimatedSection
+                delay={200}
+                className="flex-1 w-full max-w-[440px] mx-auto bg-primary rounded-[16px] p-[2px] flex flex-col relative transform lg:-translate-y-4 shadow-xl hover:shadow-2xl transition-all duration-300 focus-within:ring-2 focus-within:ring-primary focus-within:ring-offset-4"
+              >
+                <div className="absolute -top-4 left-1/2 -translate-x-1/2 bg-white text-primary font-mono text-[13px] font-black tracking-widest uppercase px-5 py-2 rounded-full z-20 whitespace-nowrap shadow-md border border-primary/10">
+                  <span role="img" aria-label="Fogo" className="mr-1">🔥</span> MELHOR OPÇÃO
+                </div>
+                
+                <div className="bg-primary h-full w-full rounded-[14px] p-6 md:p-8 flex flex-col justify-between">
+                  <div>
+                    <h3 className="font-body font-bold text-white text-lg md:text-xl uppercase leading-[1.5]">
+                      Plano Vitalício
+                    </h3>
+                    <div className="flex items-center gap-3 mt-2 flex-wrap" aria-label="Preço: R$77,90. Preço original: R$210,00">
+                      <span className="font-heading font-bold text-white text-[42px] sm:text-[52px] leading-none" aria-hidden="true">
+                        R$77,90
+                      </span>
+                      <span className="font-body font-medium text-white/70 text-base md:text-lg line-through uppercase mt-2" aria-hidden="true">
+                        R$210,00
+                      </span>
+                    </div>
+                    <p className="font-body font-medium text-white/90 text-sm md:text-base leading-[1.5] mt-2">
+                      Pagamento único &bull; Em até 12X
+                    </p>
+
+                    <ul className="flex flex-col gap-4 mt-8" aria-label="Benefícios do plano vitalício">
+                      {benefits.map((b) => (
+                        <li key={b} className="flex items-start gap-3">
+                          <svg width="22" height="22" viewBox="0 0 20 20" fill="none" className="shrink-0 mt-0.5" aria-hidden="true">
+                            <rect width="20" height="20" rx="10" fill="white" fillOpacity="0.2"/>
+                            <path d="M14 7L8.5 12.5L6 10" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                          </svg>
+                          <span className="font-body font-medium text-white text-[15px] leading-[1.4]">
+                            {b}
+                          </span>
+                        </li>
+                      ))}
+                      <li className="flex items-start gap-3">
+                          <svg width="22" height="22" viewBox="0 0 20 20" fill="none" className="shrink-0 mt-0.5" aria-hidden="true">
+                            <rect width="20" height="20" rx="10" fill="white"/>
+                            <path d="M14 7L8.5 12.5L6 10" stroke="#a62c2c" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"/>
+                          </svg>
+                          <span className="font-body gap-1.5 font-bold text-white text-[15px] leading-[1.4] flex flex-wrap items-center">
+                            Acesso Vitalício <span className="bg-white/20 px-2 py-0.5 rounded text-white text-[13px] tracking-wide inline-block mt-1 sm:mt-0">(Para Sempre)</span>
+                          </span>
+                      </li>
+                    </ul>
+                  </div>
+
+                  <div className="mt-8">
+                    <a 
+                      href="https://pay.cakto.com.br/ktmjrjp_819342" 
+                      className="group flex items-center justify-center gap-3 h-[52px] px-6 text-[15.8px] bg-white text-primary rounded-[4px] font-body font-semibold transition-all duration-300 hover:bg-[#fafafa] hover:scale-[1.02] active:scale-[0.98] w-full shadow-lg focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-primary"
+                      aria-label="Assinar Plano Vitalício por R$77,90"
+                    >
+                      COMPRAR VITALÍCIO
+                      <svg
+                        width="20"
+                        height="20"
+                        viewBox="0 0 20 20"
+                        fill="none"
+                        className="transition-transform duration-300 group-hover:translate-x-1"
+                        aria-hidden="true"
+                      >
+                        <path
+                          d="M4.167 10h11.666M10.833 5l5 5-5 5"
+                          stroke="currentColor"
+                          strokeWidth="2"
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                        />
+                      </svg>
+                    </a>
+
+                    <div className="flex items-center justify-center gap-3 mt-5">
+                      <div className="flex -space-x-2" aria-hidden="true">
+                        {[1, 0.8, 0.6, 0.3].map((opacity, i) => (
+                          <div
+                            key={i}
+                            className="w-8 h-8 rounded-full bg-[#160000] border-2 border-primary shadow-sm"
+                            style={{ opacity }}
+                          />
+                        ))}
+                      </div>
+                      <p className="font-body font-medium text-white/90 text-[13px]">
+                        Mais de 3.550+ clientes escolheram
+                      </p>
+                    </div>
+                  </div>
                 </div>
               </AnimatedSection>
             </div>
