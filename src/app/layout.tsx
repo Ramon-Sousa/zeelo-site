@@ -29,34 +29,49 @@ export const metadata: Metadata = {
     shortcut: "/images/logo-1x1-brand.png",
     apple: "/images/logo-1x1-brand.png",
   },
-  title: "Zeelo - Organize e Monte o Enxoval dos Sonhos Pagando Barato",
+  title: "Zeelo – Como Montar Enxoval de Casa Nova com Inteligência e Economia",
   description:
-    "Organize seu enxoval de forma prática e inteligente. Acompanhe promoções, controle financeiro e planeje cada cômodo do seu novo lar em um só lugar. Acesso vitalício por apenas R$47,90.",
+    "Chega de lista de enxoval em PDF e planilha manual. O Zeelo organiza todo o enxoval da sua casa nova: lista completa com +196 itens, alertas de promoções em tempo real, controle financeiro e colaboração em casal. Mais de 3.550 famílias já usam.",
   keywords: [
-    "enxoval",
-    "lista de enxoval",
+    "como montar enxoval de casa nova",
+    "lista de enxoval completa",
     "organizar enxoval",
     "enxoval de casamento",
     "enxoval novo lar",
     "planejamento de enxoval",
-    "lista de compras casa",
-    "decoração",
-    "mudança",
-    "novo lar",
+    "lista de compras casa nova",
+    "controle de gastos enxoval",
+    "promoções enxoval",
+    "aplicativo enxoval",
+    "enxoval completo por cômodo",
+    "ferramenta para montar enxoval",
+    "Zeelo enxoval",
   ],
+  alternates: {
+    canonical: "https://zeelo.site",
+  },
   openGraph: {
-    title: "Zeelo - Organize e Monte o Enxoval dos Sonhos",
+    title: "Zeelo – Como Montar Enxoval de Casa Nova com Inteligência e Economia",
     description:
-      "Organize seu enxoval de forma prática e inteligente. Promoções 24/7, controle financeiro e planejamento por cômodos.",
+      "Chega de lista em PDF. Organize o enxoval do seu novo lar com alertas de promoções em tempo real, controle financeiro e mais de 196 itens prontos. Mais de 3.550 famílias já usam o Zeelo.",
     type: "website",
     locale: "pt_BR",
     siteName: "Zeelo",
+    url: "https://zeelo.site",
+    images: [
+      {
+        url: "/images/hero-screenshot.png",
+        width: 1200,
+        height: 630,
+        alt: "Zeelo - Plataforma de organização de enxoval de casa nova",
+      },
+    ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Zeelo - Organize e Monte o Enxoval dos Sonhos",
+    title: "Zeelo – Como Montar Enxoval de Casa Nova com Inteligência",
     description:
-      "Organize seu enxoval de forma prática e inteligente. Promoções 24/7, controle financeiro e planejamento por cômodos.",
+      "Chega de lista em PDF. Organize o enxoval do seu novo lar com alertas de promoções, controle financeiro e +196 itens. Mais de 3.550 famílias organizadas.",
   },
   robots: {
     index: true,
@@ -79,6 +94,7 @@ export default function RootLayout({
   return (
     <html
       lang="pt-BR"
+      suppressHydrationWarning
       className={`${josefinSans.variable} ${inter.variable} ${azeretMono.variable}`}
     >
       <head>
@@ -93,7 +109,7 @@ export default function RootLayout({
           rel="stylesheet"
         />
       </head>
-      <body className="antialiased">{children}</body>
+      <body suppressHydrationWarning className="antialiased">{children}</body>
     </html>
   );
 }
