@@ -158,6 +158,25 @@ document.head.appendChild(a);`,
           data-utmify-prevent-subids=""
           strategy="lazyOnload"
         />
+
+        {/* Google Analytics (gtag.js) */}
+        <Script
+          src="https://www.googletagmanager.com/gtag/js?id=G-NH8S0K1KHV"
+          strategy="afterInteractive"
+        />
+        <Script
+          id="gtag-init"
+          strategy="afterInteractive"
+          dangerouslySetInnerHTML={{
+            __html: `
+              window.dataLayer = window.dataLayer || [];
+              function gtag(){dataLayer.push(arguments);}
+              gtag('js', new Date());
+
+              gtag('config', 'G-NH8S0K1KHV');
+            `,
+          }}
+        />
       </head>
       <body suppressHydrationWarning className="antialiased">
         {/* Google Tag Manager (noscript) — fallback for JS-disabled browsers */}
