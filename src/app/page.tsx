@@ -4,15 +4,24 @@ import { useState, useEffect, useCallback, useRef } from "react";
 import Image from "next/image";
 import { useInView } from "@/hooks/useInView";
 import { ShaderGradientCanvas, ShaderGradient } from "@shadergradient/react";
+import { ImagesBadge } from "@/components/ui/images-badge";
+import { BentoGrid, BentoGridItem } from "@/components/ui/bento-grid";
+import {
+  IconClipboardCopy,
+  IconFileBroken,
+  IconSignature,
+  IconTableColumn,
+} from "@tabler/icons-react";
+import { MovingBorderImage } from "@/components/ui/moving-border-image";
+
 
 const OFFER_LINK = "https://pay.cakto.com.br/ktmjrjp_819342";
 const LOGIN_LINK = "https://app.zeelo.site/login";
 
 const imgPs = [
-  "/images/prova_social/pf_01.jpg",
-  "/images/prova_social/pf_02.jpg",
-  "/images/prova_social/pf_03.jpg",
-  "/images/prova_social/pf_04.jpg",
+  "/images/loja_1.png",
+  "/images/loja_2.png",
+  "/images/loja_3.png",
 ];
 
 
@@ -141,7 +150,7 @@ function Navbar() {
     <nav
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
         scrolled 
-          ? "bg-white/70 backdrop-blur-lg border-b border-white/20 shadow-[0_4px_30px_rgba(0,0,0,0.03)]" 
+          ? "bg-white/70 backdrop-blur-lg border-b border-white/20" 
           : "bg-transparent border-b border-transparent"
       }`}
     >
@@ -150,7 +159,7 @@ function Navbar() {
         <a href="#" className="flex items-center shrink-0">
           <div className="relative h-8 w-[128px]">
             <Image
-              src="/images/logo-2x1-brand.png"
+              src="/images/logo_hor-brand.png"
               alt="Zeelo"
               fill
               className="object-contain object-left"
@@ -184,7 +193,7 @@ function Navbar() {
         <div className="hidden md:flex items-center gap-3">
           <a
             href={LOGIN_LINK}
-            className="h-[44px] px-5 flex items-center justify-center rounded-[4px] border border-border-gold text-[#131413] font-body font-light text-[13.5px] hover:bg-gray-50 transition-colors duration-200"
+            className="bg-white h-[44px] px-5 flex items-center justify-center rounded-[4px] border border-border-gold text-[#131413] font-body font-light text-[13.5px] hover:bg-gray-50 transition-colors duration-200"
           >
             Entrar
           </a>
@@ -268,7 +277,7 @@ function HeroSection() {
   return (
     <section className="relative pt-[72px] overflow-hidden min-h-[90vh] md:min-h-screen flex flex-col items-center">
       {/* Dynamic Background */}
-      <div className="absolute inset-0 z-0 pointer-events-none opacity-40">
+      <div className="absolute inset-0 z-0 pointer-events-none opacity-50">
         <ShaderGradientCanvas
           style={{
             position: 'absolute',
@@ -327,36 +336,27 @@ function HeroSection() {
         </ShaderGradientCanvas>
       </div>
 
-      <div className="relative z-10 max-w-[1440px] mx-auto px-5 md:px-10 lg:px-24 xl:px-32 flex flex-col items-center text-center pt-8 md:pt-24 lg:pt-20">
+      <div className="relative z-10 max-w-[1440px] mx-auto px-5 md:px-10 lg:px-24 xl:px-32 flex flex-col items-center text-center pt-8 md:pt-10 lg:pt-10">
         {/* Text Content */}
         <div className="max-w-4xl flex flex-col items-center mb-8 md:mb-16">
-          <AnimatedSection>
-             <div className="flex flex-col sm:flex-row items-center gap-3 sm:gap-2 px-4">
-                <div className="flex -space-x-3 sm:-space-x-4">
-                  {imgPs.map((img, i) => (
-                    <div key={i} className="w-8 h-8 sm:w-10 sm:h-10 rounded-full border-2 border-white overflow-hidden bg-gray-200">
-                      <Image src={img} alt="" width={40} height={40} />
-                    </div>
-                  ))}
-                </div>
-                <div className="flex flex-col items-center sm:items-start leading-none gap-1 sm:gap-1.5 ml-0 sm:ml-1">
-                  <div className="flex text-yellow-500 text-[12px] sm:text-[14px]">
-                    {"★".repeat(5)}
-                  </div>
-                  <span className="text-[12px] sm:text-[14px] text-text-body/70 font-medium">Usado por +1.200 pessoas</span>
-                </div>
-              </div>
+          <AnimatedSection delay={100}>
+          <div className="flex h-16 w-full items-center uppercase justify-center">
+            <ImagesBadge
+              text="Economia em tempo real"
+              images={imgPs}
+            />
+          </div>
           </AnimatedSection>
 
           <AnimatedSection delay={100}>
             <h1 className="font-heading font-bold text-[32px] sm:text-[40px] lg:text-[48px] leading-[1.1] mt-6 md:mt-8 text-text-dark tracking-tight max-w-3xl">
-              Monte seu enxoval como sempre sonhou <span className="italic text-primary">pagando barato!</span>
+              Sua casa completa, <span className="italic text-primary">gastando muito menos</span> do que você imagina.
             </h1>
           </AnimatedSection>
 
           <AnimatedSection delay={200}>
             <p className="font-body font-light text-text-body text-[15px] sm:text-base md:text-lg leading-relaxed mt-4 md:mt-6 max-w-2xl mx-auto opacity-80">
-              Com o Zeelo você organiza todo o enxoval com lista completa por cômodo, controle financeiro em tempo real e alertas de promoções, direto no celular.
+              Com o Zeelo você organiza seu enxoval de forma inteligente, com controle financeiro em tempo real e alertas de promoções.
             </p>
           </AnimatedSection>
 
@@ -372,8 +372,12 @@ function HeroSection() {
           className="relative w-full mt-auto px-4 md:px-0"
           delay={400}
         >
-          <div className="relative w-full max-w-[2400px] mx-auto overflow-hidden">
-            <div className="overflow-hidden -mb-6 md:-mb-20 rounded-t-[12px] md:rounded-t-[24px] border border-primary/20 md:border-4 border-primary/100">
+          <div className="relative w-full max-w-[2400px] mx-auto -mb-6 md:-mb-20">
+            <MovingBorderImage
+              borderRadius="12px"
+              containerClassName="w-full"
+              duration={5000}
+            >
               <Image
                 src="/images/convidado.png"
                 alt="Zeelo - Plataforma de organização de enxoval"
@@ -382,8 +386,7 @@ function HeroSection() {
                 className="w-full h-auto block"
                 priority
               />
-            </div>
-
+            </MovingBorderImage>
           </div>
         </AnimatedSection>
       </div>
@@ -433,7 +436,7 @@ function ProblemSection() {
             <AnimatedSection
               key={f.title}
               delay={i * 150}
-              className="flex flex-col items-center text-center bg-white rounded-[16px] p-6 md:p-8 border border-border hover:border-primary/20 hover:shadow-sm transition-all duration-300"
+              className="flex flex-col items-center text-center bg-white rounded-[16px] p-6 md:p-8 border border-border hover:border-primary/40 transition-all duration-300"
             >
               <div className="relative w-[200px] h-[120px] overflow-hidden mb-6">
                 <Image
@@ -522,7 +525,11 @@ function PraticalSection() {
 
         {/* Main Mockup Display */}
         <AnimatedSection delay={100} className="mb-6 md:mb-8">
-          <div className="relative w-full overflow-hidden rounded-[16px] md:rounded-[24px] border-2 md:border-4 border-primary shadow-lg">
+          <MovingBorderImage
+            borderRadius="16px"
+            containerClassName="w-full"
+            duration={4000}
+          >
             <div className="relative w-full aspect-[1680/888]">
               <Image
                 src={cards[activeCard].mockup}
@@ -532,7 +539,7 @@ function PraticalSection() {
                 sizes="(max-width: 768px) 100vw, 1440px"
               />
             </div>
-          </div>
+          </MovingBorderImage>
 
           {/* Progress dots */}
           <div className="flex items-center justify-center gap-2 mt-4" role="tablist" aria-label="Navegação das funcionalidades">
@@ -546,7 +553,7 @@ function PraticalSection() {
                 className={`h-1.5 rounded-full transition-all duration-300 ${
                   activeCard === i
                     ? "w-8 bg-primary"
-                    : "w-2 bg-border hover:bg-primary/40"
+                    : "w-2 bg-border"
                 }`}
               />
             ))}
@@ -567,8 +574,8 @@ function PraticalSection() {
                 onClick={() => handleCardClick(i)}
                 className={`w-full h-full text-left rounded-[12px] md:rounded-[16px] border p-4 md:p-5 lg:p-6 transition-all duration-300 cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 ${
                   activeCard === i
-                    ? "border-primary bg-primary-light shadow-sm"
-                    : "border-border bg-white hover:border-primary/30 hover:shadow-sm"
+                    ? "border-2 border-primary"
+                    : "border-border bg-white hover:border-primary/50"
                 }`}
               >
                 <div className="w-[40px] h-[40px] md:w-[52px] md:h-[52px] flex items-center justify-center mb-3 md:mb-4">
@@ -596,170 +603,119 @@ function PraticalSection() {
 }
 
 /* ─── Feature 3: Simplifique (Carousel on desktop, stacked on mobile) ─── */
+
+
+
+const bentoItems = [
+  {
+    title: "Painel de Referências",
+    description: "Organize estilos de decoração e inspirações em um só lugar.",
+    header: (
+      <div className="flex flex-1 w-full h-full min-h-[6rem] rounded-xl overflow-hidden bg-neutral-100 dark:bg-black border border-transparent dark:border-white/[0.2]">
+        <Image 
+          src="/images/screenshot-inspiracoes.png" 
+          alt="Inspiracoes" 
+          width={500} 
+          height={300} 
+          className="object-cover w-full h-full"
+        />
+      </div>
+    ),
+    className: "md:col-span-2",
+    // icon: <IconClipboardCopy className="h-4 w-4 text-neutral-500" />,
+  },
+  {
+    title: "Favoritos de Lojas",
+    description: "Salve produtos de diferentes lojas e compare preços.",
+    header: (
+      <div className="flex flex-1 w-full h-full min-h-[6rem] rounded-xl overflow-hidden bg-neutral-100 dark:bg-black border border-transparent dark:border-white/[0.2]">
+        <Image 
+          src="/images/screenshot-favoritos.png" 
+          alt="Favoritos" 
+          width={500} 
+          height={300} 
+          className="object-cover w-full h-full"
+        />
+      </div>
+    ),
+    className: "md:col-span-1",
+    // icon: <IconFileBroken className="h-4 w-4 text-neutral-500" />,
+  },
+  {
+    title: "Montagem em dupla",
+    description: "Você e sua companhia organizam juntas a montagem do enxoval",
+    header: (
+      <div className="flex flex-1 w-full h-full min-h-[6rem] rounded-xl overflow-hidden bg-neutral-100 dark:bg-black border border-transparent dark:border-white/[0.2]">
+        <Image 
+          src="/images/dupla.png" 
+          alt="Dupla" 
+          width={500} 
+          height={300} 
+          className="object-cover w-full h-full"
+        />
+      </div>
+    ),
+    className: "md:col-span-1",
+    // icon: <IconSignature className="h-4 w-4 text-neutral-500" />,
+  },
+  {
+    title: "Sugestões individualizadas",
+    description: "Receba sugestões de produtos para todos os itens do seu enxoval",
+    header: (
+      <div className="flex flex-1 w-full h-full min-h-[6rem] rounded-xl overflow-hidden bg-neutral-100 dark:bg-black border border-transparent dark:border-white/[0.2]">
+        <Image 
+          src="/images/sugestoes.png" 
+          alt="Sugestoes" 
+          width={500} 
+          height={300} 
+          className="object-cover w-full h-full"
+        />
+      </div>
+    ),
+    className: "md:col-span-2",
+    // icon: <IconTableColumn className="h-4 w-4 text-neutral-500" />,
+  },
+];
+
+
 function SimplifySection() {
-  const [current, setCurrent] = useState(0);
   const scrollToOffer = useCallback(() => {
     document.getElementById("preco")?.scrollIntoView({ behavior: "smooth" });
   }, []);
 
-  const slides = [
-    {
-      image: "/images/screenshot-inspiracoes.png",
-      title: "Painel de referência e inspirações",
-      desc: "Organize estilos de decoração, inspirações de moveis, eletrodomésticos para montar seu novo lar como sempre sonhou.",
-    },
-    {
-      image: "/images/screenshot-favoritos.png",
-      title: "Favoritos em um só lugar",
-      desc: "Salve seus produtos favoritos de diferentes lojas em um só lugar.",
-    },
-  ];
-
-  const nextSlide = useCallback(() => {
-    setCurrent((p) => (p + 1) % slides.length);
-  }, [slides.length]);
-
-  const prevSlide = useCallback(() => {
-    setCurrent((p) => (p - 1 + slides.length) % slides.length);
-  }, [slides.length]);
-
   return (
-    <section className="relative bg-bg-gray border-y border-border py-12 md:py-16 lg:py-[96px]">
+    <section className="relative bg-white border-y border-border py-12 md:py-16 lg:py-[96px]">
       <div className="max-w-[1440px] mx-auto px-5 md:px-10 lg:px-24 xl:px-32">
-        <div className="flex flex-col lg:flex-row gap-8 lg:gap-16">
-          {/* Left Content */}
-          <div className="lg:w-[380px] shrink-0 flex flex-col gap-8 lg:gap-12">
-            <AnimatedSection>
-              <TagBadge variant="gold">SIMPLIFIQUE</TagBadge>
-              <h2 className="font-heading font-bold text-[#121212] text-[28px] sm:text-[36px] md:text-[44px] lg:text-[48px] leading-[1.3] mt-5">
-                Sua única preocupação será com a decoração.
-              </h2>
-            </AnimatedSection>
+        <div className="flex flex-col items-center text-center mb-12 md:mb-16">
+          <TagBadge variant="gold">SIMPLIFIQUE</TagBadge>
+          <h2 className="font-heading font-bold text-[#121212] text-[28px] sm:text-[36px] md:text-[44px] lg:text-[48px] leading-[1.3] mt-5 max-w-3xl">
+            Sua única preocupação será com a decoração.
+          </h2>
+        </div>
 
-            <AnimatedSection delay={150}>
-              <CTAButton onClick={scrollToOffer}>
-                Quero organizar meu enxoval
-              </CTAButton>
-            </AnimatedSection>
-          </div>
+        <BentoGrid className="max-w-5xl mx-auto md:auto-rows-[20rem]">
+          {bentoItems.map((item, i) => (
+            <BentoGridItem
+              key={i}
+              title={item.title}
+              description={item.description}
+              header={item.header}
+              className={item.className}
+              icon={item.icon}
+            />
+          ))}
+        </BentoGrid>
 
-          {/* Right: Carousel (desktop) / Stacked (mobile) */}
-          <div className="flex-1 min-w-0">
-            {/* Mobile: stacked cards */}
-            <div className="flex flex-col gap-4 lg:hidden">
-              {slides.map((slide, i) => (
-                <AnimatedSection key={slide.title} delay={i * 150}>
-                  <div className="rounded-[12px] border border-border overflow-hidden bg-white">
-                    <div className="relative w-full aspect-[560/360] bg-[#fafafa]">
-                      <Image
-                        src={slide.image}
-                        alt={slide.title}
-                        fill
-                        className="object-cover"
-                        sizes="(max-width: 768px) 100vw, 560px"
-                      />
-                    </div>
-                    <div className="p-4 md:p-6 border-t border-border">
-                      <h3 className="font-heading font-bold text-[#121212] text-base md:text-xl leading-[1.5]">
-                        {slide.title}
-                      </h3>
-                      <p className="font-body font-light text-text-body text-[14px] md:text-[15.6px] leading-[1.54] mt-1.5">
-                        {slide.desc}
-                      </p>
-                    </div>
-                  </div>
-                </AnimatedSection>
-              ))}
-            </div>
-
-            {/* Desktop: carousel */}
-            <div className="hidden lg:block relative overflow-hidden h-[537px]">
-              <div
-                className="flex gap-8 transition-transform duration-500 ease-in-out h-full"
-                style={{
-                  transform: `translateX(-${current * (560 + 32)}px)`,
-                }}
-              >
-                {slides.map((slide) => (
-                  <div
-                    key={slide.title}
-                    className="shrink-0 w-[560px] rounded-[16px] border border-border overflow-hidden bg-white flex flex-col"
-                  >
-                    <div className="relative w-full h-[360px] bg-[#fafafa]">
-                      <Image
-                        src={slide.image}
-                        alt={slide.title}
-                        fill
-                        className="object-cover"
-                        sizes="560px"
-                      />
-                    </div>
-                    <div className="p-6 border-t border-border flex-1">
-                      <h3 className="font-heading font-bold text-[#121212] text-xl leading-[1.5]">
-                        {slide.title}
-                      </h3>
-                      <p className="font-body font-light text-text-body text-[15.6px] leading-[1.54] mt-2">
-                        {slide.desc}
-                      </p>
-                    </div>
-                  </div>
-                ))}
-              </div>
-
-              {/* Carousel Controls */}
-              <div className="absolute inset-0 flex items-center justify-between p-6 pointer-events-none">
-                <button
-                  onClick={prevSlide}
-                  className={`pointer-events-auto w-10 h-10 rounded-full bg-border-gold flex items-center justify-center transition-all duration-200 hover:scale-110 ${
-                    current === 0 ? "opacity-0" : "opacity-100"
-                  }`}
-                  aria-label="Anterior"
-                >
-                  <svg
-                    width="20"
-                    height="20"
-                    viewBox="0 0 20 20"
-                    fill="none"
-                  >
-                    <path
-                      d="M12.5 15l-5-5 5-5"
-                      stroke="#4e4b49"
-                      strokeWidth="1.5"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                    />
-                  </svg>
-                </button>
-                <button
-                  onClick={nextSlide}
-                  className={`pointer-events-auto w-10 h-10 rounded-full bg-border-gold flex items-center justify-center transition-all duration-200 hover:scale-110 ${
-                    current === slides.length - 1 ? "opacity-0" : "opacity-100"
-                  }`}
-                  aria-label="Próximo"
-                >
-                  <svg
-                    width="20"
-                    height="20"
-                    viewBox="0 0 20 20"
-                    fill="none"
-                  >
-                    <path
-                      d="M7.5 5l5 5-5 5"
-                      stroke="#4e4b49"
-                      strokeWidth="1.5"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                    />
-                  </svg>
-                </button>
-              </div>
-            </div>
-          </div>
+        <div className="flex justify-center mt-12 md:mt-16">
+          <CTAButton onClick={scrollToOffer}>
+            Quero organizar meu enxoval
+          </CTAButton>
         </div>
       </div>
     </section>
   );
 }
+
 
 /* ─── CTA / Pricing Section ─── */
 const ALL_BENEFITS = [
@@ -813,7 +769,7 @@ function PricingSection() {
 
               {/* ── Card 1: Mensal ── */}
               <AnimatedSection delay={0} className="w-full">
-                <div className="bg-white rounded-[14px] border border-border p-5 md:p-6 flex flex-col h-full shadow-sm hover:shadow-md transition-shadow duration-300">
+                <div className="bg-white rounded-[14px] border border-border p-5 md:p-6 flex flex-col h-full hover:border-primary/40 transition-all duration-300">
                   <div>
                     {/* <p className="font-mono text-[11px] font-semibold tracking-[2px] uppercase text-text-body/50">Plano</p> */}
                     <h3 className="font-body font-bold text-[#121212] text-lg md:text-xl uppercase leading-tight mt-1">Mensal</h3>
@@ -859,7 +815,7 @@ function PricingSection() {
               {/* ── Card 2: Anual — DESTAQUE ── */}
               <AnimatedSection delay={100} className="w-full sm:-mt-4 sm:-mb-0">
                 <div className="relative bg-primary rounded-[14px] p-[2px] shadow-2xl">
-                  <div className="absolute -top-4 left-1/2 -translate-x-1/2 bg-white text-primary font-mono text-[12px] font-black tracking-widest uppercase px-4 py-1.5 rounded-full z-20 whitespace-nowrap shadow-md border border-primary/10">
+                  <div className="absolute -top-4 left-1/2 -translate-x-1/2 bg-white text-primary font-mono text-[12px] font-black tracking-widest uppercase px-4 py-1.5 rounded-full z-20 whitespace-nowrap border border-primary/20">
                     <span role="img" aria-label="Fogo" className="mr-1">🔥</span> MELHOR OPÇÃO
                   </div>
                   <div className="bg-primary rounded-[12px] p-5 md:p-7 flex flex-col">
@@ -907,7 +863,7 @@ function PricingSection() {
 
               {/* ── Card 3: Vitalício ── */}
               <AnimatedSection delay={200} className="w-full">
-                <div className="bg-white rounded-[14px] border border-border p-5 md:p-6 flex flex-col h-full shadow-sm hover:shadow-md transition-shadow duration-300">
+                <div className="bg-white rounded-[14px] border border-border p-5 md:p-6 flex flex-col h-full hover:border-primary/40 transition-all duration-300">
                   <div>
                     {/* <p className="font-mono text-[11px] font-semibold tracking-[2px] uppercase text-text-body/50">Plano</p> */}
                     <h3 className="font-body font-bold text-[#121212] text-lg md:text-xl uppercase leading-tight mt-1">Vitalício</h3>
@@ -962,28 +918,24 @@ function FAQSection() {
 
   const faqs = [
     {
-      q: "Por quanto tempo vou ter acesso?",
-      a: "O acesso ao Zeelo é vitalício! Você paga uma única vez e tem acesso para sempre, sem mensalidades ou cobranças adicionais.",
+      q: "Os itens sugeridos são seguros?",
+      a: "Sim, nossa Inteligência Artificial busca os produtos em promoção que atendam critérios de compra e boas notas de avaliação. Ainda assim não temos vínculo direto com os produtos ou lojas sugeridas.",
     },
     {
       q: "Consigo acessar no celular?",
-      a: "Sim! O Zeelo é 100% responsivo e funciona perfeitamente em celulares, tablets e computadores.",
+      a: "Sim, você pode acessar o Zeelo em qualquer dispositivo, seja computador, tablet ou celular.",
     },
     {
       q: "As promoções são atualizadas?",
-      a: "Sim! As promoções e cupons são atualizados constantemente, 24 horas por dia, 7 dias por semana.",
+      a: "O Zeelo atualiza promoções e cupons diversas vezes ao longo do dia, mesmo que você não veja a promoção no momento em que ela foi adicionada, ela continuará visível. Porém a disponibilidade depende do produto e loja.",
     },
     {
       q: "Consigo adicionar outras pessoas para acessar o app?",
-      a: "Sim! Você pode adicionar gratuitamente mais uma pessoa para participar da montagem do enxoval junto com você.",
+      a: "Sim, você pode adicionar um usuário extra à sua conta, assim essa pessoa poderá te ajudar na montagem do enxoval como quiser.",
     },
     {
       q: "Consigo adicionar mais itens na lista de enxoval?",
-      a: "Claro! Além dos mais de 196 itens já disponíveis, você pode adicionar quantos itens personalizados quiser.",
-    },
-    {
-      q: "Tenho que pagar mensalidade?",
-      a: "Não! O Zeelo tem um pagamento único. Sem mensalidades, sem taxas escondidas.",
+      a: "Claro! Além dos itens já disponíveis, você pode adicionar quantos itens personalizados quiser à sua lista.",
     },
     {
       q: "Tenho garantia?",
@@ -1143,7 +1095,7 @@ function SocialProofSection() {
     {
       name: "Mariana S.",
       role: "Santana do Paraíso, MG",
-      avatar: "/images/testimonial-avatars.png",
+      avatar: "/images/prova_social/pf_01.jpg",
       text: "Estava usando uma planilha com os itens do enxoval, achava o máximo por não depender de lista impressa, mas esse app é surreal! Já peguei meu microondas e uns movéis pra sala, economizei mais de 300 reais do valor que tava planejando. Recomendo demais!",
       stars: 5,
       accent: "#D3CA79",
@@ -1151,7 +1103,7 @@ function SocialProofSection() {
     {
       name: "Rafael & Camila",
       role: "Brotas, SP",
-      avatar: "/images/testimonial-avatars.png",
+      avatar: "/images/prova_social/pf_02.jpg",
       text: "Assinamos por recomendação de uma amiga, é simplesmente maravilhoso! Muito fácil de usar e ta nos ajudando muito na organização.",
       stars: 5,
       accent: "#D3CA79",
@@ -1159,12 +1111,13 @@ function SocialProofSection() {
     {
       name: "Fernanda L.",
       role: "Ribeirão Preto, SP",
-      avatar: "/images/testimonial-avatars.png",
+      avatar: "/images/prova_social/pf_03.jpg",
       text: "Vamos nos mudar em setembro, nossa montagem já esta em 40%, mas o que mais tem ajudado é o controle financeiro em conjunto com a priorização, não precisamos nos preocupar em comprar os itens maiores por questão de espaço e ainda sim temos controle do que falta.",
       stars: 5,
       accent: "#D3CA79",
     },
   ];
+
 
   const metrics = [
     { value: "1.290+", label: "Famílias usando" },
@@ -1211,7 +1164,7 @@ function SocialProofSection() {
             <AnimatedSection
               key={t.name}
               delay={i * 100}
-              className="flex flex-col bg-white rounded-[12px] overflow-hidden border border-border shadow-sm hover:shadow-md transition-shadow duration-300"
+              className="flex flex-col bg-white rounded-[12px] overflow-hidden border border-border hover:border-primary/40 transition-all duration-300"
             >
               {/* Accent bar top */}
               <div className="h-[4px] w-full" style={{ backgroundColor: t.accent }} />
@@ -1236,21 +1189,19 @@ function SocialProofSection() {
                 {/* Author with avatar */}
                 <footer className="flex items-center gap-3 pt-4 border-t border-border mt-auto">
                   <div
-                    className="w-10 h-10 rounded-full overflow-hidden shrink-0 border-2"
+                    className="w-10 h-10 rounded-full overflow-hidden shrink-0 border-2 relative"
                     style={{ borderColor: t.accent }}
                     aria-hidden="true"
                   >
-                    <div
-                      className="w-[120px] h-[40px] md:w-[120px]"
-                      style={{
-                        backgroundImage: `url('${t.avatar}')`,
-                        backgroundSize: "300% 100%",
-                        backgroundRepeat: "no-repeat",
-                        width: "40px",
-                        height: "40px",
-                      }}
+                    <Image
+                      src={t.avatar}
+                      alt={t.name}
+                      fill
+                      className="object-cover object-center"
+                      sizes="40px"
                     />
                   </div>
+
                   <div>
                     <p className="font-heading font-bold text-primary text-[14px] leading-none">{t.name}</p>
                     <p className="font-body font-light text-text-body text-[12px] mt-0.5">{t.role}</p>
@@ -1308,7 +1259,7 @@ function ComparisonSection() {
         </AnimatedSection>
 
         <AnimatedSection delay={100}>
-          <div className="overflow-x-auto rounded-[12px] border border-border shadow-sm">
+          <div className="overflow-x-auto rounded-[12px] border border-border">
             <table
               className="w-full min-w-[480px]"
               role="table"
@@ -1398,7 +1349,7 @@ export default function Home() {
             "@type": "Organization",
             name: "Zeelo",
             url: "https://zeelo.site",
-            logo: "https://zeelo.site/images/logo-2x1-brand.png",
+            logo: "https://zeelo.site/images/logo_hor-brand.png",
             sameAs: [],
             contactPoint: {
               "@type": "ContactPoint",
@@ -1486,18 +1437,10 @@ export default function Home() {
             mainEntity: [
               {
                 "@type": "Question",
-                name: "Como montar enxoval de casa nova?",
+                name: "Os itens sugeridos são seguros?",
                 acceptedAnswer: {
                   "@type": "Answer",
-                  text: "O Zeelo oferece uma lista completa com mais de 196 itens organizados por cômodo. Você marca o que já tem, acompanha o progresso e recebe alertas de promoções dos itens que ainda faltam.",
-                },
-              },
-              {
-                "@type": "Question",
-                name: "Por quanto tempo vou ter acesso?",
-                acceptedAnswer: {
-                  "@type": "Answer",
-                  text: "O Plano Vitalício oferece acesso para sempre, sem mensalidades. O Plano Anual dá acesso por 12 meses.",
+                  text: "Sim, nossa Inteligência Artificial busca os produtos em promoção que atendam critérios de compra e boas notas de avaliação. Ainda assim não temos vínculo direto com os produtos ou lojas sugeridas.",
                 },
               },
               {
@@ -1505,31 +1448,31 @@ export default function Home() {
                 name: "Consigo acessar no celular?",
                 acceptedAnswer: {
                   "@type": "Answer",
-                  text: "Sim! O Zeelo é 100% responsivo e funciona em celulares, tablets e computadores.",
+                  text: "Sim, você pode acessar o Zeelo em qualquer dispositivo, seja computador, tablet ou celular.",
                 },
               },
               {
                 "@type": "Question",
-                name: "As promoções são atualizadas em tempo real?",
+                name: "As promoções são atualizadas?",
                 acceptedAnswer: {
                   "@type": "Answer",
-                  text: "Sim! As promoções e cupons são monitorados com IA e atualizados 24 horas por dia, 7 dias por semana. Você recebe notificações dos itens que realmente quer.",
+                  text: "O Zeelo atualiza promoções e cupons diversas vezes ao longo do dia, mesmo que você não veja a promoção no momento em que ela foi adicionada, ela continuará visível. Porém a disponibilidade depende do produto e loja.",
                 },
               },
               {
                 "@type": "Question",
-                name: "Consigo adicionar outras pessoas para acessar?",
+                name: "Consigo adicionar outras pessoas para acessar o app?",
                 acceptedAnswer: {
                   "@type": "Answer",
-                  text: "Sim! Você pode adicionar gratuitamente mais uma pessoa para montar o enxoval em conjunto — ideal para casais.",
+                  text: "Sim, você pode adicionar um usuário extra à sua conta, assim essa pessoa poderá te ajudar na montagem do enxoval como quiser.",
                 },
               },
               {
                 "@type": "Question",
-                name: "Tenho que pagar mensalidade?",
+                name: "Consigo adicionar mais itens na lista de enxoval?",
                 acceptedAnswer: {
                   "@type": "Answer",
-                  text: "Não! O Plano Vitalício é um pagamento único, sem mensalidades ou taxas escondidas.",
+                  text: "Claro! Além dos itens já disponíveis, você pode adicionar quantos itens personalizados quiser à sua lista.",
                 },
               },
               {

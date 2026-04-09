@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Josefin_Sans, Inter, Azeret_Mono } from "next/font/google";
+import Script from "next/script";
 import "./globals.css";
 
 const josefinSans = Josefin_Sans({
@@ -108,8 +109,69 @@ export default function RootLayout({
           href="https://fonts.googleapis.com/css2?family=Zen+Dots&display=swap"
           rel="stylesheet"
         />
+
+        {/* Google Tag Manager — loads after page is interactive, non-blocking */}
+        <Script
+          id="gtm-head"
+          strategy="afterInteractive"
+          dangerouslySetInnerHTML={{
+            __html: `(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-MHS56BCL');`,
+          }}
+        />
+
+        {/* Microsoft Clarity — loads after page is interactive, non-blocking */}
+        <Script
+          id="clarity"
+          strategy="afterInteractive"
+          dangerouslySetInnerHTML={{
+            __html: `(function(c,l,a,r,i,t,y){
+c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+})(window,document,"clarity","script","w95fm6ngvt");`,
+          }}
+        />
+
+        {/* Utmify Pixel — lazy loaded, lowest priority */}
+        <Script
+          id="utmify-pixel"
+          strategy="lazyOnload"
+          dangerouslySetInnerHTML={{
+            __html: `window.pixelId = "69d805fc7cf4c593612274c9";
+var a = document.createElement("script");
+a.setAttribute("async", "");
+a.setAttribute("defer", "");
+a.setAttribute("src", "https://cdn.utmify.com.br/scripts/pixel/pixel.js");
+document.head.appendChild(a);`,
+          }}
+        />
+
+        {/* Utmify UTM tracking — lazy loaded, lowest priority */}
+        <Script
+          id="utmify-utms"
+          src="https://cdn.utmify.com.br/scripts/utms/latest.js"
+          data-utmify-prevent-xcod-sck=""
+          data-utmify-prevent-subids=""
+          strategy="lazyOnload"
+        />
       </head>
-      <body suppressHydrationWarning className="antialiased">{children}</body>
+      <body suppressHydrationWarning className="antialiased">
+        {/* Google Tag Manager (noscript) — fallback for JS-disabled browsers */}
+        <noscript>
+          <iframe
+            src="https://www.googletagmanager.com/ns.html?id=GTM-MHS56BCL"
+            height="0"
+            width="0"
+            style={{ display: "none", visibility: "hidden" }}
+          />
+        </noscript>
+
+        {children}
+      </body>
     </html>
   );
 }
