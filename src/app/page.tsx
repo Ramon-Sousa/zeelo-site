@@ -3,7 +3,7 @@
 import { useState, useEffect, useCallback, useRef } from "react";
 import Image from "next/image";
 import { useInView } from "@/hooks/useInView";
-import { ShaderGradientCanvas, ShaderGradient } from "@shadergradient/react";
+import dynamic from "next/dynamic";
 import { ImagesBadge } from "@/components/ui/images-badge";
 import { BentoGrid, BentoGridItem } from "@/components/ui/bento-grid";
 import {
@@ -23,6 +23,17 @@ const imgPs = [
   "/images/loja_2.png",
   "/images/loja_3.png",
 ];
+
+// Lazy load the heaviest component to clear main-thread
+const ShaderGradientCanvas = dynamic(
+  () => import("@shadergradient/react").then((mod) => mod.ShaderGradientCanvas),
+  { ssr: false }
+);
+
+const ShaderGradient = dynamic(
+  () => import("@shadergradient/react").then((mod) => mod.ShaderGradient),
+  { ssr: false }
+);
 
 
 /* ─── Animated Section Wrapper ─── */
@@ -339,39 +350,28 @@ function HeroSection() {
       <div className="relative z-10 max-w-[1440px] mx-auto px-5 md:px-10 lg:px-24 xl:px-32 flex flex-col items-center text-center pt-8 md:pt-10 lg:pt-10">
         {/* Text Content */}
         <div className="max-w-4xl flex flex-col items-center mb-8 md:mb-16">
-          <AnimatedSection delay={100}>
-          <div className="flex h-16 w-full items-center uppercase justify-center">
+          <div className="flex h-16 w-full items-center uppercase justify-center animate-fade-in-up delay-100">
             <ImagesBadge
               text="Economia em tempo real"
               images={imgPs}
             />
           </div>
-          </AnimatedSection>
 
-          <AnimatedSection delay={100}>
-            <h1 className="font-heading font-bold text-[32px] sm:text-[40px] lg:text-[48px] leading-[1.1] mt-6 md:mt-8 text-text-dark tracking-tight max-w-3xl">
-              Sua casa completa, <span className="italic text-primary">gastando muito menos</span> do que você imagina.
-            </h1>
-          </AnimatedSection>
+          <h1 className="font-heading font-bold text-[32px] sm:text-[40px] lg:text-[48px] leading-[1.1] mt-6 md:mt-8 text-text-dark tracking-tight max-w-3xl animate-fade-in-up delay-100">
+            Sua casa completa, <span className="italic text-primary">gastando muito menos</span> do que você imagina.
+          </h1>
 
-          <AnimatedSection delay={200}>
-            <p className="font-body font-light text-text-body text-[15px] sm:text-base md:text-lg leading-relaxed mt-4 md:mt-6 max-w-2xl mx-auto opacity-80">
-              Com o Zeelo você organiza seu enxoval de forma inteligente, com controle financeiro em tempo real e alertas de promoções.
-            </p>
-          </AnimatedSection>
+          <p className="font-body font-light text-text-body text-[15px] sm:text-base md:text-lg leading-relaxed mt-4 md:mt-6 max-w-2xl mx-auto opacity-80 animate-fade-in-up delay-200">
+            Com o Zeelo você organiza seu enxoval de forma inteligente, com controle financeiro em tempo real e alertas de promoções.
+          </p>
 
-          <AnimatedSection delay={300}>
-            <div className="mt-8 md:mt-10">
-              <CTAButton onClick={scrollToOffer}>Organizar enxoval agora</CTAButton>
-            </div>
-          </AnimatedSection>
+          <div className="mt-8 md:mt-10 animate-fade-in-up delay-300">
+            <CTAButton onClick={scrollToOffer}>Organizar enxoval agora</CTAButton>
+          </div>
         </div>
 
         {/* Hero Image / Mockup below - aligned to bottom and cropped */}
-        <AnimatedSection
-          className="relative w-full mt-auto px-4 md:px-0"
-          delay={400}
-        >
+        <div className="relative w-full mt-auto px-4 md:px-0 animate-fade-in-up delay-400">
           <div className="relative w-full max-w-[2400px] mx-auto -mb-6 md:-mb-20">
             <MovingBorderImage
               borderRadius="12px"
@@ -385,10 +385,11 @@ function HeroSection() {
                 height={1400}
                 className="w-full h-auto block"
                 priority
+                fetchPriority="high"
               />
             </MovingBorderImage>
           </div>
-        </AnimatedSection>
+        </div>
       </div>
     </section>
   );
@@ -472,7 +473,7 @@ function PraticalSection() {
       icon: "/images/icon-calendar.svg",
       title: "Promoções 24/7",
       desc: "Receba notificações em tempo real de promoções, você passa menos tempo procurando o lugar mais barato.",
-      mockup: "/images/promos.png",
+      mockup: "/images/deals.png",
     },
     {
       icon: "/images/icon-layers.svg",
@@ -739,7 +740,7 @@ function PricingSection() {
     <section id="preco" className="relative bg-white py-12 md:py-16 lg:py-[72px] overflow-hidden">
       {/* BG Image — hidden on mobile */}
       <div className="absolute inset-0 pointer-events-none hidden md:block" aria-hidden="true">
-        <Image src="/images/cta-bg.png" alt="" fill className="object-cover" />
+        <Image src="/images/cta-bg.png" alt="" fill className="object-cover" sizes="100vw" />
         <div className="absolute inset-0 bg-[rgba(3,3,3,0.4)]" />
       </div>
 
@@ -748,10 +749,10 @@ function PricingSection() {
           <div className="bg-bg-gray rounded-[16px] p-5 md:p-8 lg:p-14 overflow-hidden relative">
             {/* Decorative patterns */}
             <div className="absolute bottom-0 left-0 w-[300px] lg:w-[599px] h-[280px] lg:h-[555px] opacity-10 pointer-events-none" aria-hidden="true">
-              <Image src="/images/pattern-bg.png" alt="" fill className="object-cover" />
+              <Image src="/images/pattern-bg.png" alt="" fill className="object-cover" sizes="(max-width: 1024px) 300px, 599px" />
             </div>
             <div className="absolute top-0 right-0 w-[300px] lg:w-[599px] h-[280px] lg:h-[555px] opacity-10 rotate-180 pointer-events-none" aria-hidden="true">
-              <Image src="/images/pattern-bg.png" alt="" fill className="object-cover" />
+              <Image src="/images/pattern-bg.png" alt="" fill className="object-cover" sizes="(max-width: 1024px) 300px, 599px" />
             </div>
 
             {/* Heading */}

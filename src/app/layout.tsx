@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Josefin_Sans, Inter, Azeret_Mono } from "next/font/google";
+import { Josefin_Sans, Inter, Azeret_Mono, Zen_Dots } from "next/font/google";
 import Script from "next/script";
 import "./globals.css";
 
@@ -21,6 +21,13 @@ const azeretMono = Azeret_Mono({
   subsets: ["latin"],
   weight: ["600"],
   variable: "--font-mono",
+  display: "swap",
+});
+
+const zenDots = Zen_Dots({
+  subsets: ["latin"],
+  weight: ["400"],
+  variable: "--font-logo",
   display: "swap",
 });
 
@@ -96,7 +103,7 @@ export default function RootLayout({
     <html
       lang="pt-BR"
       suppressHydrationWarning
-      className={`${josefinSans.variable} ${inter.variable} ${azeretMono.variable}`}
+      className={`${josefinSans.variable} ${inter.variable} ${azeretMono.variable} ${zenDots.variable}`}
     >
       <head>
         <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -105,10 +112,7 @@ export default function RootLayout({
           href="https://fonts.gstatic.com"
           crossOrigin="anonymous"
         />
-        <link
-          href="https://fonts.googleapis.com/css2?family=Zen+Dots&display=swap"
-          rel="stylesheet"
-        />
+        {/* Next/font/google replaces external Zen Dots stylesheet */}
 
         {/* Google Tag Manager — loads after page is interactive, non-blocking */}
         <Script

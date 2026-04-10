@@ -3,13 +3,6 @@
 
 @custom-variant dark (&:is(.dark *));
 
-@font-face {
-  font-family: 'Zen Dots';
-  font-style: normal;
-  font-weight: 400;
-  font-display: swap;
-  src: url('https://fonts.gstatic.com/s/zendots/v12/XRXQ3ICfm00IGoesQeaETW4H.woff2') format('woff2');
-}
 
 :root {
   /* Zeelo Design Tokens */

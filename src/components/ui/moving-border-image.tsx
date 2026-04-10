@@ -81,10 +81,20 @@ const MovingBorderPath = ({
   const pathRef = useRef<SVGRectElement | null>(null);
 
   const progress = useMotionValue(0);
-
+  const lengthRef = useRef<number>(0);
+  
+  // Pause animation when out of view
+  const inViewRef = useRef<SVGSVGElement | null>(null);
+  const { useInView } = require("framer-motion");
+  const isInView = useInView(inViewRef, { margin: "200px" });
 
   useAnimationFrame((time) => {
-    const length = pathRef.current?.getTotalLength();
+    if (!isInView) return; // Save main thread!
+    
+    if (!lengthRef.current && pathRef.current) {
+      lengthRef.current = pathRef.current.getTotalLength();
+    }
+    const length = lengthRef.current;
     if (length) {
       const pxPerMillisecond = length / duration;
       progress.set((time * pxPerMillisecond) % length);
@@ -93,11 +103,11 @@ const MovingBorderPath = ({
 
   const x = useTransform(
     progress,
-    (val) => pathRef.current?.getPointAtLength(val).x,
+    (val) => pathRef.current?.getPointAtLength(val).x || 0,
   );
   const y = useTransform(
     progress,
-    (val) => pathRef.current?.getPointAtLength(val).y,
+    (val) => pathRef.current?.getPointAtLength(val).y || 0,
   );
 
   const transform = useMotionTemplate`translateX(${x}px) translateY(${y}px) translateX(-50%) translateY(-50%)`;
@@ -105,6 +115,7 @@ const MovingBorderPath = ({
   return (
     <>
       <svg
+        ref={inViewRef}
         xmlns="http://www.w3.org/2000/svg"
         preserveAspectRatio="none"
         className="absolute h-full w-full"
