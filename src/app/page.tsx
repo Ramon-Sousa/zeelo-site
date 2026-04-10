@@ -379,7 +379,7 @@ function HeroSection() {
               duration={5000}
             >
               <Image
-                src="/images/convidado.png"
+                src="/images/dash.png"
                 alt="Zeelo - Plataforma de organização de enxoval"
                 width={2400}
                 height={1400}
@@ -471,7 +471,7 @@ function PraticalSection() {
     {
       icon: "/images/icon-calendar.svg",
       title: "Promoções 24/7",
-      desc: "Receba notificações em tempo real de promoções e cupons, você passa menos tempo procurando o lugar mais barato.",
+      desc: "Receba notificações em tempo real de promoções, você passa menos tempo procurando o lugar mais barato.",
       mockup: "/images/promos.png",
     },
     {
@@ -488,9 +488,9 @@ function PraticalSection() {
     },
     {
       icon: "/images/icon-keyframes.svg",
-      title: "Montagem em dupla",
-      desc: "Adicione gratuitamente uma pessoa adicional para participar da montagem de seu enxoval em conjunto.",
-      mockup: "/images/convidado.png",
+      title: "Cupons atualizados",
+      desc: "Encontre os melhores cupons e descontos para os produtos que você precisa.",
+      mockup: "/images/cupons.png",
     },
   ];
 
@@ -1219,7 +1219,7 @@ function SocialProofSection() {
 /* ─── Comparison Section: Zeelo vs. Listas estáticas ─── */
 function ComparisonSection() {
   const rows: { feature: string; zeelo: boolean; old: boolean }[] = [
-    { feature: "Lista completa", zeelo: true, old: true },
+    { feature: "Lista de enxoval completa", zeelo: true, old: true },
     { feature: "Separação de itens por cômodos", zeelo: true, old: true },
     { feature: "Alertas de promoções em tempo real", zeelo: true, old: false },
     { feature: "Cálculo financeiro automático", zeelo: true, old: false },
