@@ -6,7 +6,7 @@
 
 ## O Produto
 
-O [Zeelo](https://zeelo.site) é um planejador de enxoval para casais e pessoas se preparando para morar em um novo lar. Substitui planilhas genéricas e listas fragmentadas por uma plataforma com organização por cômodo, controle financeiro em tempo real e alertas automáticos de promoções nas maiores plataformas de e-commerce do Brasil — Mercado Livre, Shopee e Amazon.
+O [Zeelo](https://www.zeelo.site) é um planejador de enxoval para casais e pessoas se preparando para morar em um novo lar. Substitui planilhas genéricas e listas fragmentadas por uma plataforma com organização por cômodo, controle financeiro em tempo real e alertas automáticos de promoções nas maiores plataformas de e-commerce do Brasil — Mercado Livre, Shopee e Amazon.
 
 Quem está montando uma casa nova precisa gerenciar dezenas de itens distribuídos por diferentes cômodos, acompanhar quanto já foi gasto, priorizar o que é essencial e ainda encontrar os melhores preços. Nenhuma ferramenta do mercado resolve os três ao mesmo tempo.
 
@@ -21,7 +21,7 @@ O produto foi validado com uma planilha no Google Sheets antes de qualquer linha
 O ecossistema Zeelo é composto por três serviços independentes:
 
 ```
-zeelo.site          → Landing Page (este repositório)
+www.zeelo.site          → Landing Page (este repositório)
 app.zeelo.site      → Aplicação principal
 Buscador            → Serviço de scraping automatizado
 ```
