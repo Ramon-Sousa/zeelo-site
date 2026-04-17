@@ -175,22 +175,28 @@ function Navbar() {
         </a>
 
         {/* Desktop Nav Links */}
-        <div className="hidden md:flex items-center gap-6">
+        <div className="hidden md:flex items-center gap-5 lg:gap-6">
           <button
-            onClick={() => scrollTo("como-funciona")}
-            className="text-text-body font-body font-light text-[15.5px] hover:text-primary transition-colors duration-200"
+            onClick={() => scrollTo("lista-enxoval")}
+            className="text-text-body font-body font-light text-[14.5px] lg:text-[15.5px] hover:text-primary transition-colors duration-200"
           >
-            Como funciona
+            Lista de enxoval
+          </button>
+          <button
+            onClick={() => scrollTo("como-montar")}
+            className="text-text-body font-body font-light text-[14.5px] lg:text-[15.5px] hover:text-primary transition-colors duration-200"
+          >
+            Como montar
           </button>
           <button
             onClick={() => scrollTo("preco")}
-            className="text-text-body font-body font-light text-[15.5px] hover:text-primary transition-colors duration-200"
+            className="text-text-body font-body font-light text-[14.5px] lg:text-[15.5px] hover:text-primary transition-colors duration-200"
           >
             Preço
           </button>
           <button
             onClick={() => scrollTo("duvidas")}
-            className="text-text-body font-body font-light text-[15.5px] hover:text-primary transition-colors duration-200"
+            className="text-text-body font-body font-light text-[14.5px] lg:text-[15.5px] hover:text-primary transition-colors duration-200"
           >
             Dúvidas
           </button>
@@ -241,10 +247,16 @@ function Navbar() {
       >
         <div className="flex flex-col px-5 py-4 gap-4">
           <button
-            onClick={() => scrollTo("como-funciona")}
+            onClick={() => scrollTo("lista-enxoval")}
             className="text-left text-text-body font-body font-light text-[15.5px]"
           >
-            Como funciona
+            Lista de enxoval
+          </button>
+          <button
+            onClick={() => scrollTo("como-montar")}
+            className="text-left text-text-body font-body font-light text-[15.5px]"
+          >
+            Como montar
           </button>
           <button
             onClick={() => scrollTo("preco")}
@@ -393,7 +405,7 @@ function HeroSection() {
             >
               <Image
                 src="/images/dash.png"
-                alt="Zeelo - Plataforma de organização de enxoval"
+                alt="Painel do Zeelo com a lista de enxoval de casa nova completa, organizada por cômodo"
                 width={2400}
                 height={1400}
                 className="w-full h-auto block"
@@ -415,16 +427,19 @@ function ProblemSection() {
   const features = [
     {
       image: "/images/feature-listas.png",
+      alt: "Lista de enxoval impressa em papel — método antigo",
       title: "Listas impressas",
       desc: "Um caderno enorme cheio de produtos, aqui o nível de planejamento é quase ZERO.",
     },
     {
       image: "/images/feature-planner.png",
+      alt: "Planner online genérico para enxoval — sem alertas nem orçamento automático",
       title: "Planner online",
       desc: "Esses podem até te ajudar, mas ainda não fornecem informações para tomada de decisões.",
     },
     {
       image: "/images/feature-sem-planejamento.png",
+      alt: "Anotações soltas de enxoval espalhadas em bloco de notas e prints",
       title: "Sem planejamento",
       desc: "Blocos de notas, links, prints, nenhuma organização, é fácil sair do controle.",
     },
@@ -443,7 +458,7 @@ function ProblemSection() {
             <br className="hidden md:block" /> tenta montar o enxoval:
           </h2>
           <p className="font-body font-light text-text-body text-base md:text-lg mt-4 max-w-2xl">
-            Listas em PDF, planilhas manuais e cadernos de anotações. .
+            Começar a montar o enxoval de casa nova é um dos momentos mais marcantes antes da mudança e também um dos mais cansativos quando você depende de uma lista de enxoval em PDF, planilha ou caderno. 
           </p>
         </AnimatedSection>
 
@@ -457,7 +472,7 @@ function ProblemSection() {
               <div className="relative w-[200px] h-[120px] overflow-hidden mb-6">
                 <Image
                   src={f.image}
-                  alt={f.title}
+                  alt={f.alt}
                   fill
                   loading="lazy"
                   className="object-contain"
@@ -479,7 +494,7 @@ function ProblemSection() {
   );
 }
 
-/* ─── Feature 2: Praticidade (Interactive Mockups + Auto-Carousel) ─── */
+/* ─── Feature 2: Praticidade (Antes → Agora + Mockups) ─── */
 function PraticalSection() {
   const [activeCard, setActiveCard] = useState(0);
   const pausedRef = useRef(false);
@@ -489,30 +504,40 @@ function PraticalSection() {
     {
       icon: "/images/icon-calendar.svg",
       title: "Promoções 24/7",
-      desc: "Receba notificações em tempo real de promoções, você passa menos tempo procurando o lugar mais barato.",
+      after: "O Zeelo avisa quando o item da sua lista entra em promoção.",
       mockup: "/images/deals.png",
     },
     {
       icon: "/images/icon-layers.svg",
       title: "Separação inteligente",
-      desc: "Acompanhe o progresso de montagem individualizado para cada área do seu enxoval.",
+      after: "Acompanhe o progresso do seu enxoval em detalhes para cada cômodo",
       mockup: "/images/itens.png",
     },
     {
       icon: "/images/icon-coin.svg",
       title: "Controle financeiro",
-      desc: "Estimativa de gastos, caixinha de mudança, evolução de compras e investimentos em um só lugar.",
+      after: "Orçamento atualizado em tempo real junto com a montagem.",
       mockup: "/images/financas.png",
     },
     {
       icon: "/images/icon-keyframes.svg",
       title: "Cupons atualizados",
-      desc: "Encontre os melhores cupons e descontos para os produtos que você precisa.",
+      after: "Cupons atualizados diariamente pra economizar",
       mockup: "/images/cupons.png",
     },
   ];
 
-  // Auto-advance every 3s, pause for 5s after a manual click
+  const roomPills = [
+    { label: "Cozinha", count: 48 },
+    { label: "Sala", count: 22 },
+    { label: "Quarto", count: 34 },
+    { label: "Banheiro", count: 28 },
+    { label: "Lavanderia", count: 18 },
+    { label: "Home Office", count: 12 },
+    { label: "Varanda", count: 14 },
+    { label: "Limpeza", count: 20 },
+  ];
+
   useEffect(() => {
     const interval = setInterval(() => {
       if (!pausedRef.current) {
@@ -534,11 +559,12 @@ function PraticalSection() {
   return (
     <section className="bg-white py-12 md:py-16 lg:py-[72px]">
       <div className="max-w-[1440px] mx-auto px-5 md:px-10 lg:px-24 xl:px-32">
-        <AnimatedSection className="flex flex-col items-center text-center mb-10 md:mb-16">
+        <AnimatedSection className="flex flex-col items-center text-center mb-8 md:mb-12">
           <TagBadge variant="dark">Tudo em um só lugar</TagBadge>
-          <h2 className="font-heading font-bold text-[#121212] text-[28px] sm:text-[36px] md:text-[48px] lg:text-[52px] leading-[1.29] mt-5">
-            Praticidade em um só lugar
+          <h2 className="font-heading font-bold text-[#121212] text-[28px] sm:text-[36px] md:text-[44px] lg:text-[50px] leading-[1.2] mt-5 max-w-[980px]">
+            Sua <span className="italic text-primary">lista de enxoval de casa nova</span> completa
           </h2>
+          
         </AnimatedSection>
 
         {/* Main Mockup Display */}
@@ -551,7 +577,7 @@ function PraticalSection() {
             <div className="relative w-full aspect-[1680/888]">
               <Image
                 src={cards[activeCard].mockup}
-                alt={`Demonstração: ${cards[activeCard].title}`}
+                alt={`Demonstração da lista de enxoval no Zeelo: ${cards[activeCard].title}`}
                 fill
                 loading="lazy"
                 className="object-cover transition-all duration-500 ease-in-out"
@@ -580,9 +606,9 @@ function PraticalSection() {
           </div>
         </AnimatedSection>
 
-        {/* Feature Cards — clickable tabs */}
+        {/* Feature Cards — Antes → Agora */}
         <div
-          className="grid grid-cols-2 lg:grid-cols-4 gap-3 md:gap-4"
+          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 md:gap-4"
           role="tablist"
           aria-label="Funcionalidades do Zeelo"
         >
@@ -608,16 +634,21 @@ function PraticalSection() {
                     className="object-contain"
                   />
                 </div>
-                <h3 className="font-heading font-bold text-[#121212] text-[14px] md:text-[18px] lg:text-[20px] leading-[1.3]">
+                <h3 className="font-heading font-bold text-[#121212] text-[15px] md:text-[18px] lg:text-[20px] leading-[1.3]">
                   {card.title}
                 </h3>
-                <p className="font-body font-light text-text-body text-[12px] md:text-[14px] lg:text-[15px] leading-[1.5] mt-1.5 hidden sm:block">
-                  {card.desc}
-                </p>
+                <div className="mt-2.5 flex flex-col gap-1.5">
+                 
+                  <p className="font-body font-light text-[#121212] text-[12.5px] md:text-[14px] lg:text-[15px] leading-[1.5]">
+                    {card.after}
+                  </p>
+                </div>
               </button>
             </AnimatedSection>
           ))}
         </div>
+
+          
       </div>
     </section>
   );
@@ -752,7 +783,7 @@ function SimplifySection() {
 
 /* ─── CTA / Pricing Section ─── */
 const ALL_BENEFITS = [
-  "Mais de 196 itens disponíveis",
+  "Mais de 200 itens disponíveis",
   "Priorização e organização por cômodos",
   "Promoções e cupons 24 horas por dia.",
   "Controle de finanças e evolução do enxoval",
@@ -951,6 +982,26 @@ function FAQSection() {
 
   const faqs = [
     {
+      q: "O que é enxoval de casa nova?",
+      a: "Enxoval de casa nova é o conjunto de itens essenciais que você compra antes (ou logo depois) de se mudar: utensílios de cozinha, cama, banho, limpeza, eletrodomésticos básicos e móveis principais. Diferente do enxoval de bebê, o de casa é pensado por cômodo.",
+    },
+    {
+      q: "Quantos itens tem um enxoval de casa nova completo?",
+      a: "Entre 180 e 220 itens em média. A lista padrão do Zeelo traz +200 itens validados por +3.550 famílias, separados em 8 cômodos: cozinha, sala, quarto do casal, banheiro, lavanderia, varanda, home office e limpeza geral.",
+    },
+    {
+      q: "Quanto tempo leva para montar o enxoval de casa nova?",
+      a: "A lista fica pronta em menos de 3 minutos no Zeelo. A compra completa dos itens leva em média de 3 a 8 meses, dependendo do orçamento. Planejar cedo significa aproveitar mais promoções ao longo do caminho.",
+    },
+    {
+      q: "Posso compartilhar a lista de enxoval com meu parceiro(a)?",
+      a: "Sim. O Zeelo permite adicionar um usuário extra na mesma conta vocês montam a lista juntos, dividem as compras marcadas e acompanham o orçamento em tempo real.",
+    },
+    {
+      q: "A lista de enxoval do Zeelo substitui o PDF ou a planilha?",
+      a: "Substitui com vantagem: o PDF é estático, não avisa promoção nem calcula orçamento. A lista do Zeelo atualiza automaticamente, com alertas de promoção em tempo real, controle financeiro automático e colaboração em casal.",
+    },
+    {
       q: "Os itens sugeridos são seguros?",
       a: "Sim, nossa Inteligência Artificial busca os produtos em promoção que atendam critérios de compra e boas notas de avaliação. Ainda assim não temos vínculo direto com os produtos ou lojas sugeridas.",
     },
@@ -1015,7 +1066,7 @@ function FAQSection() {
                 </button>
                 <div
                   className={`overflow-hidden transition-all duration-300 ease-in-out ${
-                    open === i ? "max-h-[200px] opacity-100 pb-6" : "max-h-0 opacity-0"
+                    open === i ? "max-h-[400px] opacity-100 pb-6" : "max-h-0 opacity-0"
                   }`}
                 >
                   <p className="font-body font-light text-text-body text-base md:text-lg leading-[1.6]">
@@ -1052,22 +1103,28 @@ function Footer() {
             ©2026 Zeelo
           </p>
 
-          <div className="flex items-center gap-6 md:gap-8">
+          <div className="flex items-center flex-wrap justify-center gap-4 md:gap-6">
             <button
-              onClick={() => scrollTo("como-funciona")}
-              className="font-body font-light text-primary-light text-[15.8px] hover:text-white transition-colors duration-200"
+              onClick={() => scrollTo("lista-enxoval")}
+              className="font-body font-light text-primary-light text-[14.5px] md:text-[15.5px] hover:text-white transition-colors duration-200"
             >
-              Como funciona
+              Lista de enxoval
+            </button>
+            <button
+              onClick={() => scrollTo("como-montar")}
+              className="font-body font-light text-primary-light text-[14.5px] md:text-[15.5px] hover:text-white transition-colors duration-200"
+            >
+              Como montar
             </button>
             <button
               onClick={() => scrollTo("preco")}
-              className="font-body font-light text-primary-light text-[15.6px] hover:text-white transition-colors duration-200"
+              className="font-body font-light text-primary-light text-[14.5px] md:text-[15.5px] hover:text-white transition-colors duration-200"
             >
               Preço
             </button>
             <button
               onClick={() => scrollTo("duvidas")}
-              className="font-body font-light text-primary-light text-[15.9px] hover:text-white transition-colors duration-200"
+              className="font-body font-light text-primary-light text-[14.5px] md:text-[15.5px] hover:text-white transition-colors duration-200"
             >
               Dúvidas
             </button>
@@ -1156,7 +1213,7 @@ function SocialProofSection() {
 
   const metrics = [
     { value: "1.290+", label: "Famílias usando" },
-    { value: "196+", label: "Itens organizados" },
+    { value: "200+", label: "Itens organizados" },
     { value: "24/7", label: "Alertas de promoções" },
     { value: "7 dias", label: "Garantia total" },
   ];
@@ -1248,10 +1305,290 @@ function SocialProofSection() {
             </AnimatedSection>
           ))}
         </div>
+
+        <AnimatedSection delay={300} className="mt-10 md:mt-12 text-center">
+          <p className="font-body text-[#121212] text-[16px] md:text-[18px] leading-[1.55] max-w-[640px] mx-auto">
+            Com o Zeelo, usuárias economizam em média <strong className="text-primary">R$800</strong> usando os alertas de promoção — e <strong className="text-primary">67%</strong> escolhem o plano anual pela relação custo-benefício.
+          </p>
+        </AnimatedSection>
       </div>
     </section>
   );
 }
+
+/* ─── Section A: O que entra na lista de enxoval ─── */
+function ListaEnxovalSection() {
+  const categories = [
+    {
+      name: "Cozinha",
+      count: 48,
+      examples: ["Panelas Profissionais", "Liquidificador", "Jogo de Talheres"],
+      accent: "#A62C2C",
+    },
+    {
+      name: "Sala",
+      count: 22,
+      examples: ["Móveis e Sofás", "Estante de TV", "Tapetes Decorativos"],
+      accent: "#EA7300",
+    },
+    {
+      name: "Quarto",
+      count: 34,
+      examples: ["Cama Box e Colchão", "Jogo de Lençol", "Travesseiros"],
+      accent: "#A62C2C",
+    },
+    {
+      name: "Banheiro",
+      count: 28,
+      examples: ["Jogo de Toalhas", "Antiderrapantes", "Organizadores"],
+      accent: "#D3CA79",
+    },
+    {
+      name: "Lavanderia",
+      count: 18,
+      examples: ["Máquina de Lavar", "Varal de Teto", "Tábua de Passar"],
+      accent: "#EA7300",
+    },
+    {
+      name: "Varanda",
+      count: 14,
+      examples: ["Rede de balanço", "Vasos e Plantas", "Churrasqueira"],
+      accent: "#D3CA79",
+    },
+    {
+      name: "Home Office",
+      count: 12,
+      examples: ["Mesa de Trabalho", "Cadeira Ergonômica", "Luminária"],
+      accent: "#A62C2C",
+    },
+    {
+      name: "Geral",
+      count: 20,
+      examples: ["Aspirador Robô", "Kits de Limpeza", "Mops e Organizadores"],
+      accent: "#EA7300",
+    },
+  ];
+
+  return (
+    <section
+      id="lista-enxoval"
+      aria-labelledby="lista-enxoval-heading"
+      className="bg-bg-gray py-16 md:py-24 border-y border-border"
+    >
+      <div className="max-w-[1440px] mx-auto px-6 md:px-10 lg:px-24 xl:px-32">
+        <AnimatedSection className="flex flex-col items-center text-center mb-14 md:mb-20">
+          <TagBadge variant="pink">Lista Completa</TagBadge>
+          <h2
+            id="lista-enxoval-heading"
+            className="font-heading font-bold text-[#121212] text-3xl sm:text-4xl md:text-5xl leading-[1.15] mt-6 max-w-[850px] tracking-tight"
+          >
+            O que entra na lista de enxoval do Zeelo?
+          </h2>
+          <p className="font-body font-normal text-text-body text-base md:text-lg leading-relaxed mt-5 max-w-[700px] opacity-90">
+            Receba <strong className="text-[#121212] font-semibold">+200 itens prontos</strong>, organizados por cômodo, com curadoria de marcas e preços atualizados.
+          </p>
+        </AnimatedSection>
+
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 w-full">
+          {categories.map((cat, i) => (
+            <AnimatedSection key={cat.name} delay={i * 50} className="flex h-full">
+              <article className="group relative w-full bg-white rounded-2xl border border-border p-6 md:p-7 transition-all duration-300 hover:border-primary flex flex-col h-full overflow-hidden">
+                {/* Barra de cor sutil no topo do card */}
+                <div 
+                  className="absolute top-0 left-0 w-full h-1.5" 
+                  style={{ backgroundColor: cat.accent }}
+                />
+                
+                <div className="flex flex-col mb-6">
+                  <div className="flex items-center justify-between gap-2 mb-1">
+                    <h3 className="font-heading font-bold text-[#121212] text-lg md:text-xl tracking-tight">
+                      {cat.name}
+                    </h3>
+                    <span
+                      className="font-mono font-bold text-[11px] uppercase tracking-wider px-2 py-1 rounded-md"
+                      style={{ backgroundColor: `${cat.accent}12`, color: cat.accent }}
+                    >
+                      {cat.count} itens
+                    </span>
+                  </div>
+                </div>
+
+                <ul className="flex flex-col gap-3 flex-grow" role="list">
+                  {cat.examples.map((ex) => (
+                    <li
+                      key={ex}
+                      className="font-body font-normal text-text-body text-sm md:text-[15px] flex items-start gap-3"
+                    >
+                      <svg 
+                        className="w-4 h-4 mt-0.5 shrink-0" 
+                        viewBox="0 0 24 24" 
+                        fill="none" 
+                        style={{ color: cat.accent }}
+                      >
+                        <path d="M20 6L9 17L4 12" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"/>
+                      </svg>
+                      {ex}
+                    </li>
+                  ))}
+                  <li className="font-body italic text-text-body/60 text-xs mt-2 border-t border-border pt-3">
+                    ... e mais {cat.count - 3} itens
+                  </li>
+                </ul>
+              </article>
+            </AnimatedSection>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+/* ─── Section B: Como montar o enxoval em 4 passos ─── */
+function ComoMontarSection() {
+  const scrollToOffer = useCallback(() => {
+    document.getElementById("preco")?.scrollIntoView({ behavior: "smooth" });
+  }, []);
+
+  const steps = [
+  {
+    n: "01",
+    title: "Personalize sua jornada",
+    desc: "Monte o enxoval no seu ritmo. Escolha entre uma lista completa ou foque apenas no que é essencial e importante para o seu momento.",
+  },
+  {
+    n: "02",
+    title: "Inteligência financeira",
+    desc: "Defina sua meta de gastos e deixe o Zeelo selecionar os itens com as melhores avaliações que cabem perfeitamente no seu bolso.",
+  },
+  {
+    n: "03",
+    title: "Radar de ofertas 24/7",
+    desc: "Economize sem esforço. Ative alertas e receba avisos em tempo real sempre que um item da sua lista baixar de preço nas grandes lojas.",
+  },
+  {
+    n: "04",
+    title: "Sincronia total do casal",
+    desc: "Conecte seu parceiro(a) para dividir tarefas, marcar itens comprados e ver a casa nova ganhar vida, com transparência e orçamento compartilhado.",
+  },
+];
+
+  return (
+    <section
+      id="como-montar"
+      aria-labelledby="como-montar-heading"
+      className="bg-white py-12 md:py-16 lg:py-[72px]"
+    >
+      <div className="max-w-[1440px] mx-auto px-5 md:px-10 lg:px-24 xl:px-32">
+        <AnimatedSection className="flex flex-col items-center text-center mb-10 md:mb-14">
+          <TagBadge variant="orange">Prático e rápido</TagBadge>
+          <h2
+            id="como-montar-heading"
+            className="font-heading font-bold text-[#121212] text-[28px] sm:text-[36px] md:text-[44px] lg:text-[50px] leading-[1.22] mt-5 max-w-[920px]"
+          >
+           Configure seu enxoval em apenas 3 minutos
+          </h2>
+          
+        </AnimatedSection>
+
+        <ol className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-5" role="list">
+          {steps.map((step, i) => (
+            <AnimatedSection key={step.n} delay={i * 80} className="h-full">
+              <li className="relative h-full bg-bg-gray rounded-[14px] border border-border p-5 md:p-6 hover:border-primary/40 transition-all duration-300 flex flex-col">
+                <span className="font-heading font-bold text-primary text-[42px] md:text-[48px] leading-none opacity-80">
+                  {step.n}
+                </span>
+                <h3 className="font-heading font-bold text-[#121212] text-[16.5px] md:text-[18px] leading-[1.3] mt-3">
+                  {step.title}
+                </h3>
+                <p className="font-body font-light text-text-body text-[13.5px] md:text-[14.5px] leading-[1.55] mt-2">
+                  {step.desc}
+                </p>
+              </li>
+            </AnimatedSection>
+          ))}
+        </ol>
+
+        <AnimatedSection delay={300} className="flex justify-center mt-10 md:mt-12">
+          <CTAButton onClick={scrollToOffer}>Começar minha lista agora</CTAButton>
+        </AnimatedSection>
+      </div>
+    </section>
+  );
+}
+
+/* ─── Section C: Quanto custa montar um enxoval ─── */
+function QuantoCustaSection() {
+  const tiers = [
+    {
+      name: "Enxoval básico",
+      range: "R$4.000 — R$7.000",
+      accent: "#D3CA79",
+      desc: "O essencial para morar bem sem excessos: cama, cozinha funcional, banheiro equipado, máquina de lavar e móveis básicos de sala. Ideal para quem está começando a vida de casal ou se mudando sozinha e quer priorizar o que realmente se usa no dia a dia.",
+    },
+    {
+      name: "Enxoval intermediário",
+      range: "R$8.000 — R$14.000",
+      accent: "#EA7300",
+      desc: "A maioria das famílias se encaixa aqui. Inclui eletrodomésticos de linha melhor, jogo de lençol e toalha com mais qualidade, decoração inicial (tapete, cortinas, quadros) e home office simples. Equilíbrio entre conforto e orçamento.",
+    },
+    {
+      name: "Enxoval completo",
+      range: "R$15.000+",
+      accent: "#A62C2C",
+      desc: "Para quem quer casa pronta desde o primeiro dia: eletrodomésticos top de linha, decoração planejada, home office equipado, varanda mobiliada e itens duplos para receber visitas. Fica confortável tanto para casal com renda consolidada quanto para quem vai morar por muitos anos.",
+    },
+  ];
+
+  return (
+    <section
+      aria-labelledby="quanto-custa-heading"
+      className="bg-bg-gray py-12 md:py-16 lg:py-[72px] border-y border-border"
+    >
+      <div className="max-w-[1440px] mx-auto px-5 md:px-10 lg:px-24 xl:px-32">
+        <AnimatedSection className="flex flex-col items-center text-center mb-10 md:mb-12">
+          <TagBadge variant="gold">Orçamento</TagBadge>
+          <h2
+            id="quanto-custa-heading"
+            className="font-heading font-bold text-[#121212] text-[28px] sm:text-[36px] md:text-[44px] lg:text-[50px] leading-[1.22] mt-5 max-w-[920px]"
+          >
+            Quanto custa montar um enxoval de casa nova?
+          </h2>
+          <p className="font-body font-light text-text-body text-[15px] md:text-[17px] leading-[1.65] mt-5 max-w-[780px]">
+            Depende do seu estilo de vida e das escolhas de marca — mas a média brasileira em 2026 fica entre <strong className="text-[#121212]">R$4.000 e R$15.000</strong>. Abaixo estão as três faixas que o Zeelo usa como referência para estimar o seu orçamento.
+          </p>
+        </AnimatedSection>
+
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6">
+          {tiers.map((tier, i) => (
+            <AnimatedSection key={tier.name} delay={i * 100} className="h-full">
+              <article className="h-full bg-white rounded-[14px] border border-border p-6 md:p-7 hover:border-primary/40 transition-all duration-300 flex flex-col">
+                <span
+                  className="inline-block font-mono font-semibold text-[11px] uppercase tracking-[2px] px-2 py-1 rounded-[3px] self-start"
+                  style={{ backgroundColor: `${tier.accent}20`, color: tier.accent }}
+                >
+                  {tier.name}
+                </span>
+                <p className="font-heading font-bold text-[#121212] text-[26px] md:text-[30px] leading-none mt-4">
+                  {tier.range}
+                </p>
+                <p className="font-body font-light text-text-body text-[14px] md:text-[15px] leading-[1.6] mt-4">
+                  {tier.desc}
+                </p>
+              </article>
+            </AnimatedSection>
+          ))}
+        </div>
+
+        <AnimatedSection delay={300} className="mt-10 md:mt-12 text-center">
+          <p className="font-body text-[#121212] text-[16px] md:text-[18px] leading-[1.55] max-w-[640px] mx-auto">
+            Com o Zeelo, usuárias economizam em média <strong className="text-primary">R$800</strong> usando os alertas de promoção — e <strong className="text-primary">67%</strong> escolhem o plano anual pela relação custo-benefício.
+          </p>
+        </AnimatedSection>
+      </div>
+    </section>
+  );
+}
+
 
 /* ─── Comparison Section: Zeelo vs. Listas estáticas ─── */
 function ComparisonSection() {
@@ -1288,11 +1625,8 @@ function ComparisonSection() {
         <AnimatedSection className="text-center mb-10 md:mb-12">
           <TagBadge variant="gold">Compare</TagBadge>
           <h2 id="comparacao-heading" className="font-heading font-bold text-[#121212] text-[28px] sm:text-[36px] md:text-[48px] leading-[1.27] mt-5">
-            O que muda na prática
+            Por que usar o Zeelo?
           </h2>
-          <p className="font-body font-light text-text-body text-base md:text-lg mt-4 max-w-lg mx-auto">
-            Papel não avisa promoção. Planilha não calcula o orçamento sozinha. Veja o que o Zeelo faz diferente.
-          </p>
         </AnimatedSection>
 
         <AnimatedSection delay={100}>
@@ -1367,11 +1701,13 @@ export default function Home() {
       <Navbar />
       <main>
         <HeroSection />
-        <ProblemSection />
+        {/* <ProblemSection /> */}
+        <ComoMontarSection />
+        <ListaEnxovalSection />
         <PraticalSection />
-        <SocialProofSection />
         <SimplifySection />
         <ComparisonSection />
+        <SocialProofSection />
         <PricingSection />
         <FAQSection />
       </main>
@@ -1457,7 +1793,7 @@ export default function Home() {
                 author: { "@type": "Person", name: "Fernanda L." },
                 reviewRating: { "@type": "Rating", ratingValue: "5" },
                 reviewBody:
-                  "O Zeelo já vem com mais de 196 itens organizados por cômodo. Foi só marcar o que eu já tinha.",
+                  "O Zeelo já vem com mais de 200 itens organizados por cômodo. Foi só marcar o que eu já tinha.",
               },
             ],
           }),
@@ -1472,6 +1808,46 @@ export default function Home() {
             "@context": "https://schema.org",
             "@type": "FAQPage",
             mainEntity: [
+              {
+                "@type": "Question",
+                name: "O que é enxoval de casa nova?",
+                acceptedAnswer: {
+                  "@type": "Answer",
+                  text: "Enxoval de casa nova é o conjunto de itens essenciais que você compra antes (ou logo depois) de se mudar: utensílios de cozinha, cama, banho, limpeza, eletrodomésticos básicos e móveis principais. Diferente do enxoval de bebê, o de casa é pensado por cômodo.",
+                },
+              },
+              {
+                "@type": "Question",
+                name: "Quantos itens tem um enxoval de casa nova completo?",
+                acceptedAnswer: {
+                  "@type": "Answer",
+                  text: "Entre 180 e 220 itens em média. A lista padrão do Zeelo traz +200 itens validados por +3.550 famílias, separados em 8 cômodos: cozinha, sala, quarto do casal, banheiro, lavanderia, varanda, home office e limpeza geral.",
+                },
+              },
+              {
+                "@type": "Question",
+                name: "Quanto tempo leva para montar o enxoval de casa nova?",
+                acceptedAnswer: {
+                  "@type": "Answer",
+                  text: "A lista fica pronta em menos de 30 minutos no Zeelo. A compra completa dos itens leva em média de 3 a 8 meses, dependendo do orçamento. Planejar cedo significa aproveitar mais promoções ao longo do caminho.",
+                },
+              },
+              {
+                "@type": "Question",
+                name: "Posso compartilhar a lista de enxoval com meu parceiro(a)?",
+                acceptedAnswer: {
+                  "@type": "Answer",
+                  text: "Sim. O Zeelo permite adicionar um usuário extra na mesma conta vocês montam a lista juntos, dividem as compras marcadas e acompanham o orçamento em tempo real.",
+                },
+              },
+              {
+                "@type": "Question",
+                name: "A lista de enxoval do Zeelo substitui o PDF ou a planilha?",
+                acceptedAnswer: {
+                  "@type": "Answer",
+                  text: "Substitui com vantagem: o PDF é estático, não avisa promoção nem calcula orçamento. A lista do Zeelo atualiza automaticamente, com alertas de promoção em tempo real, controle financeiro automático e colaboração em casal.",
+                },
+              },
               {
                 "@type": "Question",
                 name: "Os itens sugeridos são seguros?",
@@ -1521,6 +1897,142 @@ export default function Home() {
                 },
               },
             ],
+          }),
+        }}
+      />
+
+      {/* JSON-LD: HowTo — "Como montar a lista de enxoval" */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "HowTo",
+            name: "Como montar a lista de enxoval de casa nova em 5 passos",
+            description:
+              "Fluxo guiado para montar sua lista de enxoval de casa nova em menos de 30 minutos, com priorização, orçamento e alertas de promoções.",
+            totalTime: "PT30M",
+            estimatedCost: {
+              "@type": "MonetaryAmount",
+              currency: "BRL",
+              value: "8000",
+            },
+            supply: [
+              { "@type": "HowToSupply", name: "Lista de cômodos da sua casa nova" },
+              { "@type": "HowToSupply", name: "Orçamento estimado" },
+            ],
+            tool: [
+              { "@type": "HowToTool", name: "Aplicativo Zeelo" },
+            ],
+            step: [
+              {
+                "@type": "HowToStep",
+                position: 1,
+                name: "Liste os cômodos da sua casa nova",
+                text: "Selecione no Zeelo os cômodos que a sua casa tem — cozinha, sala, quarto, banheiro, lavanderia, varanda, home office. A lista se adapta automaticamente aos espaços escolhidos.",
+                url: "https://zeelo.site/#como-montar",
+              },
+              {
+                "@type": "HowToStep",
+                position: 2,
+                name: "Priorize essencial vs. desejável",
+                text: "Marque o que já tem e classifique os itens entre essenciais (compra imediata) e desejáveis (podem esperar promoção). Isso protege seu orçamento.",
+                url: "https://zeelo.site/#como-montar",
+              },
+              {
+                "@type": "HowToStep",
+                position: 3,
+                name: "Defina seu orçamento total",
+                text: "Informe o teto de gasto. O Zeelo calcula em tempo real o quanto ainda falta, distribui o orçamento por cômodo e alerta se o enxoval vai estourar.",
+                url: "https://zeelo.site/#como-montar",
+              },
+              {
+                "@type": "HowToStep",
+                position: 4,
+                name: "Ative alertas de promoções",
+                text: "Com um clique você passa a receber avisos 24/7 quando o item da sua lista de enxoval entra em promoção em lojas confiáveis.",
+                url: "https://zeelo.site/#como-montar",
+              },
+              {
+                "@type": "HowToStep",
+                position: 5,
+                name: "Acompanhe a evolução em casal",
+                text: "Adicione seu parceiro(a) na conta. Vocês marcam o que já compraram, dividem tarefas e veem o progresso da casa nova ficar de pé juntos.",
+                url: "https://zeelo.site/#como-montar",
+              },
+            ],
+          }),
+        }}
+      />
+
+      {/* JSON-LD: ItemList — Lista de enxoval por cômodo */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "ItemList",
+            name: "Lista de Enxoval de Casa Nova Completa",
+            description:
+              "Lista completa com 200 itens de enxoval de casa nova separados em 8 cômodos — cozinha, sala, quarto, banheiro, lavanderia, varanda, home office e limpeza.",
+            numberOfItems: 200,
+            itemListOrder: "https://schema.org/ItemListOrderAscending",
+            itemListElement: [
+              { "@type": "ListItem", position: 1, name: "Cozinha", description: "61 itens — panelas, liquidificador, jogo de talheres, micro-ondas e mais." },
+              { "@type": "ListItem", position: 2, name: "Sala de Estar", description: "16 itens — sofá, estante, TV, tapete, poltrona e mais." },
+              { "@type": "ListItem", position: 3, name: "Quarto", description: "12" },
+              { "@type": "ListItem", position: 4, name: "Banheiro", description: "18 itens — toalhas, tapete, cesto, porta-escovas, tapete antiderrapante e mais." },
+              { "@type": "ListItem", position: 5, name: "Lavanderia", description: "24 itens — máquina de lavar, varal, cestos, produtos, tábua de passar e mais." },
+              { "@type": "ListItem", position: 6, name: "Varanda / Área Externa", description: "14 itens — vaso, cadeira, churrasqueira, jogo de mesa e mais." },
+              { "@type": "ListItem", position: 7, name: "Home Office", description: "20 itens — mesa, cadeira, luminária, organizadores e mais." },
+            ],
+          }),
+        }}
+      />
+
+      {/* JSON-LD: BreadcrumbList */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "BreadcrumbList",
+            itemListElement: [
+              { "@type": "ListItem", position: 1, name: "Início", item: "https://zeelo.site" },
+              { "@type": "ListItem", position: 2, name: "Lista de Enxoval de Casa Nova", item: "https://zeelo.site/#lista-enxoval" },
+            ],
+          }),
+        }}
+      />
+
+      {/* JSON-LD: Product — libera snippet de preço */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "Product",
+            name: "Zeelo — Lista de Enxoval de Casa Nova",
+            description:
+              "Lista de enxoval de casa nova com +200 itens por cômodo, alertas de promoções em tempo real, controle financeiro e colaboração em casal.",
+            brand: { "@type": "Brand", name: "Zeelo" },
+            image: "https://zeelo.site/images/hero-screenshot.png",
+            offers: {
+              "@type": "AggregateOffer",
+              lowPrice: "21.90",
+              highPrice: "77.90",
+              priceCurrency: "BRL",
+              offerCount: 3,
+              url: "https://zeelo.site#preco",
+              availability: "https://schema.org/InStock",
+            },
+            aggregateRating: {
+              "@type": "AggregateRating",
+              ratingValue: "4.9",
+              reviewCount: "3550",
+              bestRating: "5",
+              worstRating: "1",
+            },
           }),
         }}
       />

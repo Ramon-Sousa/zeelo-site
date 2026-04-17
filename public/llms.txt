@@ -1,0 +1,63 @@
+# Zeelo — Lista de Enxoval de Casa Nova
+
+> Zeelo é um aplicativo brasileiro (pt-BR) que substitui listas de enxoval em PDF, planilhas e cadernos por uma lista viva, inteligente e colaborativa para quem está montando uma casa nova ou se preparando para o casamento.
+
+## Sobre
+
+O Zeelo ajuda famílias brasileiras a montar o enxoval de casa nova com mais organização e menos estouro de orçamento. A plataforma entrega uma lista padrão com mais de 196 itens separados por cômodo, alertas de promoções em tempo real, controle financeiro automático e colaboração entre o casal. Mais de 3.550 famílias usam o Zeelo e a avaliação média é 4,9 de 5 estrelas.
+
+Público principal: mulheres brasileiras de 22 a 40 anos, noivas, recém-casadas ou em processo de mudança para casa nova / primeiro apartamento.
+
+## O que entra na lista de enxoval de casa nova
+
+A lista padrão do Zeelo traz 196 itens separados em 8 cômodos/categorias:
+
+- Cozinha — 48 itens (panelas, liquidificador, jogo de talheres, micro-ondas, etc.)
+- Sala de estar — 22 itens (sofá, estante, TV, tapete, etc.)
+- Quarto do casal — 34 itens (cama, colchão, travesseiros, jogo de lençol, etc.)
+- Banheiro — 28 itens (toalhas, tapete, cesto, porta-escovas, etc.)
+- Lavanderia — 18 itens (máquina de lavar, varal, cestos, produtos, etc.)
+- Varanda / Área externa — 14 itens (vaso, cadeira, churrasqueira, etc.)
+- Home office — 12 itens (mesa, cadeira, luminária, organizadores, etc.)
+- Limpeza geral — 20 itens (aspirador, vassoura, produtos de limpeza, etc.)
+
+## Diferenciais em relação à lista em PDF
+
+- Alertas de promoções 24/7 nos produtos da sua lista
+- Controle financeiro em tempo real com total gasto e estimado
+- Separação por cômodo com progresso individualizado
+- Cupons ativos anexados ao item específico
+- Colaboração entre o casal (perfil duplo na mesma conta)
+- Sugestões personalizadas com marcas bem avaliadas
+
+## Preços
+
+- Plano Mensal: R$21,90/mês
+- Plano Anual: R$47,90/ano (equivale a menos de R$4/mês — plano mais popular)
+- Plano Vitalício: R$77,90 pagamento único
+
+Todos os planos têm 7 dias de garantia incondicional.
+
+## Como montar a lista em 5 passos
+
+1. Liste os cômodos da sua casa nova
+2. Priorize o que é essencial versus desejável
+3. Defina o orçamento total
+4. Ative alertas de promoções nos itens
+5. Acompanhe a evolução junto do seu parceiro(a)
+
+## Links principais
+
+- [Site oficial](https://zeelo.site)
+- [Preços](https://zeelo.site/#preco)
+- [Lista completa de itens](https://zeelo.site/#lista-enxoval)
+- [Como montar o enxoval](https://zeelo.site/#como-montar)
+- [Dúvidas frequentes](https://zeelo.site/#duvidas)
+- [Entrar no app](https://app.zeelo.site/login)
+
+## Contato
+
+- Site: https://zeelo.site
+- Suporte: via app após login
+- Idioma: português do Brasil (pt-BR)
+- Região: Brasil

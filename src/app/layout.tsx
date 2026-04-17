@@ -30,18 +30,28 @@ const azeretMono = Azeret_Mono({
   adjustFontFallback: true,
 });
 
+const PUBLISHED_AT = "2025-01-15T00:00:00-03:00";
+
 export const metadata: Metadata = {
+  metadataBase: new URL("https://zeelo.site"),
   icons: {
     icon: "/images/logo-1x1-brand.png",
     shortcut: "/images/logo-1x1-brand.png",
     apple: "/images/logo-1x1-brand.png",
   },
-  title: "Zeelo – Como Montar Enxoval de Casa Nova com Inteligência e Economia",
+  title: "Lista de Enxoval de Casa Nova Completa com +196 Itens | Zeelo",
   description:
-    "Chega de lista de enxoval em PDF e planilha manual. O Zeelo organiza todo o enxoval da sua casa nova: lista completa com +196 itens, alertas de promoções em tempo real, controle financeiro e colaboração em casal. Mais de 3.550 famílias já usam.",
+    "Monte sua lista de enxoval de casa nova com +196 itens por cômodo, alertas de promoções em tempo real e controle financeiro. +3.550 famílias usam o Zeelo.",
   keywords: [
-    "como montar enxoval de casa nova",
+    "lista de enxoval de casa nova",
+    "lista de enxoval",
+    "enxoval de casa nova",
+    "enxoval casa nova completo",
+    "o que precisa para casa nova lista",
+    "enxoval básico casa nova",
     "lista de enxoval completa",
+    "como montar enxoval de casa nova",
+    "quanto custa enxoval casa nova",
     "organizar enxoval",
     "enxoval de casamento",
     "enxoval novo lar",
@@ -54,31 +64,43 @@ export const metadata: Metadata = {
     "ferramenta para montar enxoval",
     "Zeelo enxoval",
   ],
+  authors: [{ name: "Equipe Zeelo", url: "https://zeelo.site" }],
+  creator: "Zeelo",
+  publisher: "Zeelo",
+  category: "lifestyle",
   alternates: {
     canonical: "https://zeelo.site",
+    languages: {
+      "pt-BR": "https://zeelo.site",
+    },
   },
   openGraph: {
-    title: "Zeelo – Como Montar Enxoval de Casa Nova com Inteligência e Economia",
+    title: "Lista de Enxoval de Casa Nova Completa com +196 Itens | Zeelo",
     description:
-      "Chega de lista em PDF. Organize o enxoval do seu novo lar com alertas de promoções em tempo real, controle financeiro e mais de 196 itens prontos. Mais de 3.550 famílias já usam o Zeelo.",
-    type: "website",
+      "Monte sua lista de enxoval de casa nova com +196 itens por cômodo, alertas de promoções em tempo real e controle financeiro. +3.550 famílias usam o Zeelo.",
+    type: "article",
     locale: "pt_BR",
     siteName: "Zeelo",
     url: "https://zeelo.site",
+    publishedTime: PUBLISHED_AT,
+    modifiedTime: new Date().toISOString(),
+    authors: ["Equipe Zeelo"],
+    section: "Enxoval de Casa Nova",
+    tags: ["enxoval", "lista de enxoval", "casa nova", "casamento"],
     images: [
       {
         url: "/images/hero-screenshot.png",
         width: 1200,
         height: 630,
-        alt: "Zeelo - Plataforma de organização de enxoval de casa nova",
+        alt: "Zeelo — Lista de enxoval de casa nova com +196 itens",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Zeelo – Como Montar Enxoval de Casa Nova com Inteligência",
+    title: "Lista de Enxoval de Casa Nova Completa | Zeelo",
     description:
-      "Chega de lista em PDF. Organize o enxoval do seu novo lar com alertas de promoções, controle financeiro e +196 itens. Mais de 3.550 famílias organizadas.",
+      "Lista de enxoval com +196 itens por cômodo, alertas de promoções e controle financeiro. +3.550 famílias já organizam com o Zeelo.",
   },
   robots: {
     index: true,
