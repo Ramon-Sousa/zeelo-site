@@ -106,12 +106,6 @@ export default function RootLayout({
       className={`${josefinSans.variable} ${inter.variable} ${azeretMono.variable} ${zenDots.variable}`}
     >
       <head>
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link
-          rel="preconnect"
-          href="https://fonts.gstatic.com"
-          crossOrigin="anonymous"
-        />
         {/* Next/font/google replaces external Zen Dots stylesheet */}
 
         {/* Google Tag Manager — loads after page is interactive, non-blocking */}
