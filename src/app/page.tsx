@@ -6,12 +6,6 @@ import { useInView } from "@/hooks/useInView";
 import dynamic from "next/dynamic";
 import { ImagesBadge } from "@/components/ui/images-badge";
 import { BentoGrid, BentoGridItem } from "@/components/ui/bento-grid";
-import {
-  IconClipboardCopy,
-  IconFileBroken,
-  IconSignature,
-  IconTableColumn,
-} from "@tabler/icons-react";
 import { MovingBorderImage } from "@/components/ui/moving-border-image";
 
 
@@ -27,12 +21,12 @@ const imgPs = [
 // Lazy load the heaviest component to clear main-thread
 const ShaderGradientCanvas = dynamic(
   () => import("@shadergradient/react").then((mod) => mod.ShaderGradientCanvas),
-  { ssr: false }
+  { ssr: false, loading: () => null }
 );
 
 const ShaderGradient = dynamic(
   () => import("@shadergradient/react").then((mod) => mod.ShaderGradient),
-  { ssr: false }
+  { ssr: false, loading: () => null }
 );
 
 
@@ -173,6 +167,8 @@ function Navbar() {
               src="/images/logo_hor-brand.png"
               alt="Zeelo"
               fill
+              sizes="128px"
+              priority
               className="object-contain object-left"
             />
           </div>
@@ -281,14 +277,30 @@ function Navbar() {
 
 /* ─── Hero Section ─── */
 function HeroSection() {
+  const [shaderReady, setShaderReady] = useState(false);
+
   const scrollToOffer = useCallback(() => {
     document.getElementById("preco")?.scrollIntoView({ behavior: "smooth" });
+  }, []);
+
+  useEffect(() => {
+    const mount = () => setShaderReady(true);
+    const w = window as Window & {
+      requestIdleCallback?: (cb: () => void, opts?: { timeout: number }) => number;
+    };
+    if (typeof w.requestIdleCallback === "function") {
+      w.requestIdleCallback(mount, { timeout: 2500 });
+    } else {
+      const t = setTimeout(mount, 1200);
+      return () => clearTimeout(t);
+    }
   }, []);
 
   return (
     <section className="relative pt-[72px] overflow-hidden min-h-[90vh] md:min-h-screen flex flex-col items-center">
       {/* Dynamic Background */}
       <div className="absolute inset-0 z-0 pointer-events-none opacity-50">
+        {shaderReady && (
         <ShaderGradientCanvas
           style={{
             position: 'absolute',
@@ -345,6 +357,7 @@ function HeroSection() {
           />
 
         </ShaderGradientCanvas>
+        )}
       </div>
 
       <div className="relative z-10 max-w-[1440px] mx-auto px-5 md:px-10 lg:px-24 xl:px-32 flex flex-col items-center text-center pt-8 md:pt-10 lg:pt-10">
@@ -386,6 +399,8 @@ function HeroSection() {
                 className="w-full h-auto block"
                 priority
                 fetchPriority="high"
+                sizes="(max-width: 768px) 100vw, (max-width: 1440px) 90vw, 1440px"
+                quality={75}
               />
             </MovingBorderImage>
           </div>
@@ -444,8 +459,10 @@ function ProblemSection() {
                   src={f.image}
                   alt={f.title}
                   fill
+                  loading="lazy"
                   className="object-contain"
                   sizes="200px"
+                  quality={70}
                 />
               </div>
               <h3 className="font-heading font-bold text-[#121212] text-[16.5px] leading-[1.3]">
@@ -536,8 +553,10 @@ function PraticalSection() {
                 src={cards[activeCard].mockup}
                 alt={`Demonstração: ${cards[activeCard].title}`}
                 fill
+                loading="lazy"
                 className="object-cover transition-all duration-500 ease-in-out"
-                sizes="(max-width: 768px) 100vw, 1440px"
+                sizes="(max-width: 768px) 100vw, (max-width: 1440px) 90vw, 1440px"
+                quality={75}
               />
             </div>
           </MovingBorderImage>
@@ -585,6 +604,7 @@ function PraticalSection() {
                     alt=""
                     width={32}
                     height={32}
+                    loading="lazy"
                     className="object-contain"
                   />
                 </div>
@@ -613,11 +633,14 @@ const bentoItems = [
     description: "Organize estilos de decoração e inspirações em um só lugar.",
     header: (
       <div className="flex flex-1 w-full h-full min-h-[6rem] rounded-xl overflow-hidden bg-neutral-100 dark:bg-black border border-transparent dark:border-white/[0.2]">
-        <Image 
-          src="/images/screenshot-inspiracoes.png" 
-          alt="Inspiracoes" 
-          width={500} 
-          height={300} 
+        <Image
+          src="/images/screenshot-inspiracoes.png"
+          alt="Inspiracoes"
+          width={500}
+          height={300}
+          loading="lazy"
+          sizes="(max-width: 768px) 100vw, 500px"
+          quality={65}
           className="object-cover w-full h-full"
         />
       </div>
@@ -630,11 +653,14 @@ const bentoItems = [
     description: "Salve produtos de diferentes lojas e compare preços.",
     header: (
       <div className="flex flex-1 w-full h-full min-h-[6rem] rounded-xl overflow-hidden bg-neutral-100 dark:bg-black border border-transparent dark:border-white/[0.2]">
-        <Image 
-          src="/images/screenshot-favoritos.png" 
-          alt="Favoritos" 
-          width={500} 
-          height={300} 
+        <Image
+          src="/images/screenshot-favoritos.png"
+          alt="Favoritos"
+          width={500}
+          height={300}
+          loading="lazy"
+          sizes="(max-width: 768px) 100vw, 500px"
+          quality={70}
           className="object-cover w-full h-full"
         />
       </div>
@@ -647,11 +673,14 @@ const bentoItems = [
     description: "Você e sua companhia organizam juntas a montagem do enxoval",
     header: (
       <div className="flex flex-1 w-full h-full min-h-[6rem] rounded-xl overflow-hidden bg-neutral-100 dark:bg-black border border-transparent dark:border-white/[0.2]">
-        <Image 
-          src="/images/dupla.png" 
-          alt="Dupla" 
-          width={500} 
-          height={300} 
+        <Image
+          src="/images/dupla.png"
+          alt="Dupla"
+          width={500}
+          height={300}
+          loading="lazy"
+          sizes="(max-width: 768px) 100vw, 500px"
+          quality={75}
           className="object-cover w-full h-full"
         />
       </div>
@@ -664,11 +693,14 @@ const bentoItems = [
     description: "Receba sugestões de produtos para todos os itens do seu enxoval",
     header: (
       <div className="flex flex-1 w-full h-full min-h-[6rem] rounded-xl overflow-hidden bg-neutral-100 dark:bg-black border border-transparent dark:border-white/[0.2]">
-        <Image 
-          src="/images/sugestoes.png" 
-          alt="Sugestoes" 
-          width={500} 
-          height={300} 
+        <Image
+          src="/images/sugestoes.png"
+          alt="Sugestoes"
+          width={500}
+          height={300}
+          loading="lazy"
+          sizes="(max-width: 768px) 100vw, 500px"
+          quality={75}
           className="object-cover w-full h-full"
         />
       </div>
@@ -740,7 +772,7 @@ function PricingSection() {
     <section id="preco" className="relative bg-white py-12 md:py-16 lg:py-[72px] overflow-hidden">
       {/* BG Image — hidden on mobile */}
       <div className="absolute inset-0 pointer-events-none hidden md:block" aria-hidden="true">
-        <Image src="/images/cta-bg.png" alt="" fill className="object-cover" sizes="100vw" />
+        <Image src="/images/cta-bg.png" alt="" fill loading="lazy" quality={60} className="object-cover" sizes="100vw" />
         <div className="absolute inset-0 bg-[rgba(3,3,3,0.4)]" />
       </div>
 
@@ -749,10 +781,10 @@ function PricingSection() {
           <div className="bg-bg-gray rounded-[16px] p-5 md:p-8 lg:p-14 overflow-hidden relative">
             {/* Decorative patterns */}
             <div className="absolute bottom-0 left-0 w-[300px] lg:w-[599px] h-[280px] lg:h-[555px] opacity-10 pointer-events-none" aria-hidden="true">
-              <Image src="/images/pattern-bg.png" alt="" fill className="object-cover" sizes="(max-width: 1024px) 300px, 599px" />
+              <Image src="/images/pattern-bg.png" alt="" fill loading="lazy" quality={60} className="object-cover" sizes="(max-width: 1024px) 300px, 599px" />
             </div>
             <div className="absolute top-0 right-0 w-[300px] lg:w-[599px] h-[280px] lg:h-[555px] opacity-10 rotate-180 pointer-events-none" aria-hidden="true">
-              <Image src="/images/pattern-bg.png" alt="" fill className="object-cover" sizes="(max-width: 1024px) 300px, 599px" />
+              <Image src="/images/pattern-bg.png" alt="" fill loading="lazy" quality={60} className="object-cover" sizes="(max-width: 1024px) 300px, 599px" />
             </div>
 
             {/* Heading */}
@@ -1052,6 +1084,7 @@ function Footer() {
                 alt="Instagram"
                 width={24}
                 height={24}
+                loading="lazy"
               />
             </a>
             <a
@@ -1064,6 +1097,7 @@ function Footer() {
                 alt="Twitter"
                 width={24}
                 height={24}
+                loading="lazy"
               />
             </a>
           </div>
@@ -1198,6 +1232,8 @@ function SocialProofSection() {
                       src={t.avatar}
                       alt={t.name}
                       fill
+                      loading="lazy"
+                      quality={75}
                       className="object-cover object-center"
                       sizes="40px"
                     />

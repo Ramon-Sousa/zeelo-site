@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Josefin_Sans, Inter, Azeret_Mono, Zen_Dots } from "next/font/google";
+import { Josefin_Sans, Inter, Azeret_Mono } from "next/font/google";
 import Script from "next/script";
 import "./globals.css";
 
@@ -8,6 +8,8 @@ const josefinSans = Josefin_Sans({
   weight: ["700"],
   variable: "--font-heading",
   display: "swap",
+  preload: true,
+  adjustFontFallback: true,
 });
 
 const inter = Inter({
@@ -15,6 +17,8 @@ const inter = Inter({
   weight: ["300", "400"],
   variable: "--font-body",
   display: "swap",
+  preload: true,
+  adjustFontFallback: true,
 });
 
 const azeretMono = Azeret_Mono({
@@ -22,13 +26,8 @@ const azeretMono = Azeret_Mono({
   weight: ["600"],
   variable: "--font-mono",
   display: "swap",
-});
-
-const zenDots = Zen_Dots({
-  subsets: ["latin"],
-  weight: ["400"],
-  variable: "--font-logo",
-  display: "swap",
+  preload: false,
+  adjustFontFallback: true,
 });
 
 export const metadata: Metadata = {
@@ -103,10 +102,24 @@ export default function RootLayout({
     <html
       lang="pt-BR"
       suppressHydrationWarning
-      className={`${josefinSans.variable} ${inter.variable} ${azeretMono.variable} ${zenDots.variable}`}
+      className={`${josefinSans.variable} ${inter.variable} ${azeretMono.variable}`}
     >
       <head>
-        {/* Next/font/google replaces external Zen Dots stylesheet */}
+        {/* Preconnect to third-party origins used by analytics / pixels / checkout */}
+        <link rel="preconnect" href="https://www.googletagmanager.com" crossOrigin="" />
+        <link rel="preconnect" href="https://cdn.utmify.com.br" crossOrigin="" />
+        <link rel="preconnect" href="https://www.clarity.ms" crossOrigin="" />
+        <link rel="dns-prefetch" href="https://pay.cakto.com.br" />
+        <link rel="dns-prefetch" href="https://app.zeelo.site" />
+        <link rel="dns-prefetch" href="https://www.google-analytics.com" />
+
+        {/* Preload LCP hero image */}
+        <link
+          rel="preload"
+          as="image"
+          href="/images/dash.png"
+          fetchPriority="high"
+        />
 
         {/* Google Tag Manager — loads after page is interactive, non-blocking */}
         <Script
