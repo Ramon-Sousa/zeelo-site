@@ -153,6 +153,19 @@ a.setAttribute("src", "https://cdn.utmify.com.br/scripts/pixel/pixel.js");
 document.head.appendChild(a);`,
           }}
         />
+        {/* TikTok Pixel — lazy loaded, lowest priority */}
+        <Script
+          id="tiktok-pixel"
+          strategy="lazyOnload"
+          dangerouslySetInnerHTML={{
+            __html: `window.tikTokPixelId = "69e11e711d989946d946af85";
+var a = document.createElement("script");
+a.setAttribute("async", "");
+a.setAttribute("defer", "");
+a.setAttribute("src", "https://cdn.utmify.com.br/scripts/pixel/pixel-tiktok.js");
+document.head.appendChild(a);`,
+          }}
+        />
 
         {/* Utmify UTM tracking — lazy loaded, lowest priority */}
         <Script
