@@ -153,13 +153,21 @@ function Navbar() {
 
   return (
     <nav
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 flex flex-col ${
         scrolled 
-          ? "bg-white/70 backdrop-blur-lg border-b border-white/20" 
+          ? "bg-white/80 backdrop-blur-lg border-b border-white/20" 
           : "bg-transparent border-b border-transparent"
       }`}
     >
-      <div className="max-w-[1440px] mx-auto px-5 md:px-10 lg:px-24 xl:px-32 flex items-center justify-between h-[72px]">
+      <div className="bg-primary w-full py-2 px-4 flex justify-center items-center">
+        <p className="text-white font-body text-[13px] md:text-[14px] font-medium text-center">
+          Crie sua conta <b>GRÁTIS</b> e comece organizar sua lista de enxoval hoje mesmo!{" "}
+          <a href="https://app.zeelo.site/register" className="underline font-bold hover:opacity-80 transition-opacity ml-1">
+            Criar conta grátis
+          </a>
+        </p>
+      </div>
+      <div className="max-w-[1440px] w-full mx-auto px-5 md:px-10 lg:px-24 xl:px-32 flex items-center justify-between h-[72px]">
         {/* Logo */}
         <a href="#" className="flex items-center shrink-0">
           <div className="relative h-8 w-[128px]">
@@ -210,8 +218,8 @@ function Navbar() {
           >
             Entrar
           </a>
-          <CTAButton onClick={() => scrollTo("preco")} size="md">
-            Organizar enxoval
+          <CTAButton href="https://app.zeelo.site/register" size="md">
+            Criar conta grátis
           </CTAButton>
         </div>
 
@@ -277,8 +285,8 @@ function Navbar() {
             >
               Entrar
             </a>
-            <CTAButton onClick={() => scrollTo("preco")} size="md" className="flex-1">
-              Organizar enxoval
+            <CTAButton href="https://app.zeelo.site/register" size="md" className="flex-1">
+              Criar conta grátis
             </CTAButton>
           </div>
         </div>
@@ -309,7 +317,7 @@ function HeroSection() {
   }, []);
 
   return (
-    <section className="relative pt-[72px] overflow-hidden min-h-[90vh] md:min-h-screen flex flex-col items-center">
+    <section className="relative pt-[112px] overflow-hidden min-h-[90vh] md:min-h-screen flex flex-col items-center">
       {/* Dynamic Background */}
       <div className="absolute inset-0 z-0 pointer-events-none opacity-50">
         {shaderReady && (
@@ -391,7 +399,7 @@ function HeroSection() {
           </p>
 
           <div className="mt-8 md:mt-10 animate-fade-in-up delay-300">
-            <CTAButton onClick={scrollToOffer}>Organizar enxoval agora</CTAButton>
+            <CTAButton href="https://app.zeelo.site/register">Criar conta grátis</CTAButton>
           </div>
         </div>
 
@@ -838,39 +846,22 @@ function PricingSection() {
                     {/* <p className="font-mono text-[11px] font-semibold tracking-[2px] uppercase text-text-body/50">Plano</p> */}
                     <h3 className="font-body font-bold text-[#121212] text-lg md:text-xl uppercase leading-tight mt-1">Mensal</h3>
                     <div className="mt-3" aria-label="Preço: R$21,90 por mês">
-                      <span className="font-heading font-bold text-[#121212] text-[36px] md:text-[44px] leading-none">R$21,90</span>
+                      <span className="font-heading font-bold text-[#121212] text-[36px] md:text-[44px] leading-none">R$9,90</span>
                       <span className="font-body text-text-body/50 text-sm ml-1">/mês</span>
                     </div>
-                    <p className="font-body font-light text-text-body/70 text-[13px] leading-[1.5] mt-1">Renovação mensal automática</p>
 
-                    <ul className="flex flex-col gap-3 mt-6">
-                      {allBenefits.slice(0, 6).map((b) => (
-                        <li key={b} className="flex items-start gap-2">
-                          <svg width="18" height="18" viewBox="0 0 20 20" fill="none" className="shrink-0 mt-0.5" aria-hidden="true">
-                            <rect width="20" height="20" rx="10" fill="#f0efef" />
-                            <path d="M14 7L8.5 12.5L6 10" stroke="#A62C2C" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-                          </svg>
-                          <span className="font-body text-text-body text-[13px] leading-[1.4]">{b}</span>
-                        </li>
-                      ))}
-                      
-                        <li className="flex items-start gap-2 opacity-40">
-                          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#888" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" className="shrink-0 mt-0.5" aria-hidden="true">
-                            <path d="M18 6 6 18" /><path d="m6 6 12 12" />
-                          </svg>
-                          <span className="font-body text-text-body text-[13px] leading-[1.4] line-through">Acesso vitalício</span>
-                        </li>
-                      
-                    </ul>
+                    <p className="font-body font-normal text-text-body text-[14px] leading-[1.6] mt-6 flex-grow">
+                      Organize sua mudança no seu ritmo, sem compromenter seu orçamento. Ideal para quem planeja finalizar o enxoval em até 8 meses.
+                    </p>
                   </div>
 
                   <div className="mt-6">
                     <a
-                      href="https://pay.cakto.com.br/sqewq5b"
+                      href="https://app.zeelo.site/register"
                       className="group inline-flex items-center justify-center gap-2 w-full h-[46px] px-5 text-[14px] bg-[#F0EFEF] text-[#121212] rounded-[4px] font-body font-semibold transition-all duration-300 hover:bg-[#E5E4E4] active:scale-[0.98] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2"
-                      aria-label="Assinar Plano Mensal por R$21,90"
+                      aria-label="Assinar Plano Mensal por R$9,90"
                     >
-                      ASSINAR MENSAL <ArrowIcon />
+                      CRIAR CONTA <ArrowIcon />
                     </a>
                   </div>
                 </div>
@@ -884,40 +875,25 @@ function PricingSection() {
                   </div>
                   <div className="bg-primary rounded-[12px] p-5 md:p-7 flex flex-col">
                     <div>
-                      {/* <p className="font-mono text-[11px] font-semibold tracking-[2px] uppercase text-white/60">Plano</p> */}
                       <h3 className="font-body font-bold text-white text-lg md:text-xl uppercase leading-tight mt-1">Anual</h3>
-                      <div className="mt-3" aria-label="Preço: R$47,90 por ano. Equivale a R$3,99 por mês">
-                        <span className="font-heading font-bold text-white text-[36px] md:text-[44px] leading-none">R$47,90</span>
+                      <div className="mt-3" aria-label="Preço: R$64,90 por ano">
+                        <span className="font-heading font-bold text-white text-[36px] md:text-[44px] leading-none">R$64,90</span>
                         <span className="font-body text-white/60 text-sm ml-1">/ano</span>
                       </div>
                       <p className="font-body font-light text-white/80 text-[13px] leading-[1.5] mt-1">Menos de R$4/mês</p>
 
-                      <ul className="flex flex-col gap-3 mt-6">
-                        {allBenefits.map((b) => (
-                          <li key={b} className="flex items-start gap-2">
-                            <svg width="18" height="18" viewBox="0 0 20 20" fill="none" className="shrink-0 mt-0.5" aria-hidden="true">
-                              <rect width="20" height="20" rx="10" fill="white" fillOpacity="0.2" />
-                              <path d="M14 7L8.5 12.5L6 10" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-                            </svg>
-                            <span className="font-body text-white text-[13px] leading-[1.4]">{b}</span>
-                          </li>
-                        ))}
-                        <li className="flex items-start gap-2 opacity-50">
-                          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" className="shrink-0 mt-0.5" aria-hidden="true">
-                            <path d="M18 6 6 18" /><path d="m6 6 12 12" />
-                          </svg>
-                          <span className="font-body text-white text-[13px] leading-[1.4] line-through">Acesso vitalício</span>
-                        </li>
-                      </ul>
+                      <p className="font-body font-normal text-white/90 text-[14px] leading-[1.6] mt-6 flex-grow">
+                        A escolha ideal para quem se muda nos próximos 12 meses, controle completo pagando menos de R$4 por mês.
+                      </p>
                     </div>
 
-                    <div className="mt-6">
+                    <div className="mt-6 flex flex-col h-full justify-end">
                       <a
-                        href="https://pay.cakto.com.br/334sty9"
+                        href="https://app.zeelo.site/register"
                         className="group flex items-center justify-center gap-2 h-[52px] px-6 text-[15px] bg-white text-primary rounded-[4px] font-body font-bold transition-all duration-300 hover:bg-[#fafafa] hover:scale-[1.01] active:scale-[0.98] w-full shadow-lg focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-primary"
-                        aria-label="Assinar Plano Anual por R$47,90"
+                        aria-label="Criar conta no Plano Anual"
                       >
-                        ASSINAR ANUAL <ArrowIcon />
+                        CRIAR CONTA <ArrowIcon />
                       </a>
                       <p className="font-body text-white/70 text-[12px] text-center mt-3">67% dos usuários escolhem este plano</p>
                     </div>
@@ -932,37 +908,21 @@ function PricingSection() {
                     {/* <p className="font-mono text-[11px] font-semibold tracking-[2px] uppercase text-text-body/50">Plano</p> */}
                     <h3 className="font-body font-bold text-[#121212] text-lg md:text-xl uppercase leading-tight mt-1">Vitalício</h3>
                     <div className="mt-3" aria-label="Preço único: R$77,90">
-                      <span className="font-heading font-bold text-[#121212] text-[36px] md:text-[44px] leading-none">R$77,90</span>
+                      <span className="font-heading font-bold text-[#121212] text-[36px] md:text-[44px] leading-none">R$94,90</span>
                     </div>
-                    <p className="font-body font-light text-text-body/70 text-[13px] leading-[1.5] mt-1">Use para sempre</p>
 
-                    <ul className="flex flex-col gap-3 mt-6">
-                      {allBenefits.map((b) => (
-                        <li key={b} className="flex items-start gap-2">
-                          <svg width="18" height="18" viewBox="0 0 20 20" fill="none" className="shrink-0 mt-0.5" aria-hidden="true">
-                            <rect width="20" height="20" rx="10" fill="#f0efef" />
-                            <path d="M14 7L8.5 12.5L6 10" stroke="#A62C2C" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-                          </svg>
-                          <span className="font-body text-text-body text-[13px] leading-[1.4]">{b}</span>
-                        </li>
-                      ))}
-                      <li className="flex items-start gap-2">
-                        <svg width="18" height="18" viewBox="0 0 20 20" fill="none" className="shrink-0 mt-0.5" aria-hidden="true">
-                          <rect width="20" height="20" rx="10" fill="#A62C2C" />
-                          <path d="M14 7L8.5 12.5L6 10" stroke="white" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" />
-                        </svg>
-                        <span className="font-body font-bold text-[#121212] text-[13px] leading-[1.4]">Acesso Vitalício <span className="text-primary">(Para Sempre)</span></span>
-                      </li>
-                    </ul>
+                    <p className="font-body font-normal text-text-body text-[14px] leading-[1.6] mt-6 flex-grow">
+                      Planeje cada detalhe do seu sonho no seu próprio ritmo, sem se preocupar com renovações ou prazos. Ideal para planejamentos de longo prazo, garantindo que seu histórico e organização estejam seguros até o dia da mudança.
+                    </p>
                   </div>
 
                   <div className="mt-6">
                     <a
-                      href="https://pay.cakto.com.br/ktmjrjp_819342"
+                      href="https://app.zeelo.site/register"
                       className="group inline-flex items-center justify-center gap-2 w-full h-[46px] px-5 text-[14px] bg-primary text-white rounded-[4px] font-body font-semibold transition-all duration-300 hover:brightness-110 active:scale-[0.98] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2"
-                      aria-label="Comprar Plano Vitalício por R$77,90"
+                      aria-label="Comprar Plano Vitalício por R$94,90"
                     >
-                      COMPRAR VITALÍCIO <ArrowIcon />
+                      CRIAR CONTA <ArrowIcon />
                     </a>
                   </div>
                 </div>
