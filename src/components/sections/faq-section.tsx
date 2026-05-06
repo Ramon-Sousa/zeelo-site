@@ -87,7 +87,7 @@ export function FAQSection() {
                   >
                     <path
                       d="M16 6.667v18.666M6.667 16h18.666"
-                      stroke="#a62c2c"
+                      stroke="#e84025"
                       strokeWidth="2"
                       strokeLinecap="round"
                     />

@@ -113,7 +113,7 @@ export function HeroSection() {
         <div className="max-w-4xl flex flex-col items-center mb-8 md:mb-16">
           <div className="flex h-16 w-full items-center uppercase justify-center animate-fade-in-up delay-100">
             <ImagesBadge
-              text="Encontre sempre o melhor preço para seu lar"
+              text="Encontre sempre o melhor preço para seu novo lar"
               images={imgPs}
             />
           </div>

@@ -78,10 +78,17 @@ export function Footer() {
       </div>
 
       {/* Big Logo */}
-      <div className="flex items-center justify-center py-12 md:py-20 px-5 overflow-hidden">
-        <div className="flex items-center gap-4 md:gap-8">
+      {/* <div className="flex items-center justify-center py-12 md:py-20 px-5 overflow-hidden">
+        <div className="relative h-auto md:h-20 w-[200px] md:w-[1320px] opacity-40">
+          <Image
+            src="/images/logo-h-white.png"
+            alt="Zeelo"
+            fill
+            className="object-contain"
+            loading="lazy"
+          />
         </div>
-      </div>
+      </div> */}
     </footer>
   );
 }

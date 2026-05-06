@@ -70,7 +70,7 @@ const bentoItems = [
     header: (
       <div className="flex flex-1 w-full h-full min-h-[6rem] rounded-xl overflow-hidden bg-neutral-100 dark:bg-black border border-transparent dark:border-white/[0.2]">
         <Image
-          src="/images/sugestoes.png"
+          src="/images/sug_item.png"
           alt="Sugestoes"
           width={500}
           height={300}

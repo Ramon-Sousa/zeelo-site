@@ -47,13 +47,18 @@ export function PricingSection() {
                 <div className="bg-white rounded-[14px] border border-border p-5 md:p-6 flex flex-col h-full hover:border-primary/40 transition-all duration-300">
                   <div>
                     <h3 className="font-body font-bold text-[#121212] text-lg md:text-xl uppercase leading-tight mt-1">Mensal</h3>
-                    <div className="mt-3" aria-label="Preço: R$9,90 por mês">
-                      <span className="font-heading font-bold text-[#121212] text-[36px] md:text-[44px] leading-none">R$9,90</span>
-                      <span className="font-body text-text-body/50 text-sm ml-1">/mês</span>
+                    <div className="mt-3 flex flex-col" aria-label="Preço: Grátis por 7 dias, depois R$9,90 por mês">
+                      <div>
+                        <span className="font-heading font-bold text-[#121212] text-[28px] md:text-[34px] leading-none uppercase">Grátis</span>
+                        <span className="font-body text-text-body/60 text-base md:text-lg ml-1 font-medium italic  decoration-primary/30 underline-offset-4">por 7 dias</span>
+                      </div>
+                      <p className="font-body text-text-body/70 text-[13px] md:text-[14px] mt-2 font-medium">
+                        Depois apenas R$9,90 por mês
+                      </p>
                     </div>
 
                     <p className="font-body font-normal text-text-body text-[14px] leading-[1.6] mt-6 flex-grow">
-                      Organize sua mudança sem compromenter seu orçamento. Perfeito se você planeja finalizar o enxoval em até 8 meses.
+                      Teste grátis por 7 dias e organize sua mudança sem compromenter seu orçamento. Perfeito se você planeja finalizar o enxoval em até 8 meses.
                     </p>
                   </div>
 
@@ -61,9 +66,9 @@ export function PricingSection() {
                     <a
                       href="https://app.zeelo.site/register"
                       className="group inline-flex items-center justify-center gap-2 w-full h-[46px] px-5 text-[14px] bg-[#F0EFEF] text-[#121212] rounded-[4px] font-body font-semibold transition-all duration-300 hover:bg-[#E5E4E4] active:scale-[0.98] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2"
-                      aria-label="Assinar Plano Mensal por R$9,90"
+                      aria-label="Começar teste grátis de 7 dias"
                     >
-                      COMEÇAR AGORA <ArrowIcon />
+                      Começar grátis <ArrowIcon />
                     </a>
                   </div>
                 </div>
@@ -95,7 +100,7 @@ export function PricingSection() {
                         className="group flex items-center justify-center gap-2 h-[52px] px-6 text-[15px] bg-white text-primary rounded-[4px] font-body font-bold transition-all duration-300 hover:bg-[#fafafa] hover:scale-[1.01] active:scale-[0.98] w-full shadow-lg focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-primary"
                         aria-label="COMEÇAR AGORA no Plano Anual"
                       >
-                        COMEÇAR AGORA <ArrowIcon />
+                        Escolher plano <ArrowIcon />
                       </a>
                       <p className="font-body text-white/70 text-[12px] text-center mt-3">67% dos usuários escolhem este plano</p>
                     </div>
@@ -123,7 +128,7 @@ export function PricingSection() {
                       className="group inline-flex items-center justify-center gap-2 w-full h-[46px] px-5 text-[14px] bg-primary text-white rounded-[4px] font-body font-semibold transition-all duration-300 hover:brightness-110 active:scale-[0.98] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2"
                       aria-label="Comprar Plano Vitalício por R$94,90"
                     >
-                      COMEÇAR AGORA <ArrowIcon />
+                      Escolher plano <ArrowIcon />
                     </a>
                   </div>
                 </div>

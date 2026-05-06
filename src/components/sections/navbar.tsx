@@ -31,7 +31,7 @@ export function Navbar() {
     >
       <div className="bg-primary w-full py-2 px-4 flex justify-center items-center">
         <p className="text-white font-body text-[13px] md:text-[14px] font-medium text-center">
-          Crie sua conta <b>GRÁTIS</b> e comece organizar seu enxoval hoje mesmo!{" "}
+          Teste por <b> 7 DIAS DE GRAÇA</b> e comece organizar seu enxoval com o Zeelo!{" "}
           <a href="https://app.zeelo.site/register" className="underline font-bold hover:opacity-80 transition-opacity ml-1">
             Criar conta grátis
           </a>
@@ -39,13 +39,13 @@ export function Navbar() {
       </div>
       <div className="max-w-[1440px] w-full mx-auto px-5 md:px-10 lg:px-24 xl:px-32 flex items-center justify-between h-[72px]">
         {/* Logo */}
-        <a href="" className="flex items-center shrink-0">
-          <div className="relative h-8 w-[128px]">
+        <a href="" className="flex items-center shrink-0 ">
+          <div className="relative h-8 w-[120px] md:h-10 md:w-[160px] lg:h-12 lg:w-[200px]">  
             <Image
-              src="/images/logo_hor-brand.png"
+              src="/images/logo-h-brand.png"
               alt="Zeelo"
               fill
-              sizes="128px"
+              sizes="(max-width: 768px) 120px, (max-width: 1024px) 160px, 200px"
               priority
               className="object-contain object-left"
             />

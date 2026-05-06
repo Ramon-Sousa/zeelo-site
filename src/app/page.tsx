@@ -42,7 +42,7 @@ export default function Home() {
             "@type": "Organization",
             name: "Zeelo",
             url: "https://zeelo.site",
-            logo: "https://zeelo.site/images/logo_hor-brand.png",
+            logo: "https://zeelo.site/images/logo-h-white.png",
             sameAs: [],
             contactPoint: {
               "@type": "ContactPoint",

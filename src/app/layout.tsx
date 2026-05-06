@@ -1,9 +1,9 @@
 import type { Metadata } from "next";
-import { Josefin_Sans, Inter, Azeret_Mono } from "next/font/google";
+import { Libre_Franklin, Hind_Madurai, Asap } from "next/font/google";
 import Script from "next/script";
 import "./globals.css";
 
-const josefinSans = Josefin_Sans({
+const libreFranklin = Libre_Franklin({
   subsets: ["latin"],
   weight: ["700"],
   variable: "--font-heading",
@@ -12,7 +12,7 @@ const josefinSans = Josefin_Sans({
   adjustFontFallback: true,
 });
 
-const inter = Inter({
+const hindMadurai = Hind_Madurai({
   subsets: ["latin"],
   weight: ["300", "400"],
   variable: "--font-body",
@@ -21,7 +21,7 @@ const inter = Inter({
   adjustFontFallback: true,
 });
 
-const azeretMono = Azeret_Mono({
+const asap = Asap({
   subsets: ["latin"],
   weight: ["600"],
   variable: "--font-mono",
@@ -35,9 +35,9 @@ const PUBLISHED_AT = "2025-01-15T00:00:00-03:00";
 export const metadata: Metadata = {
   metadataBase: new URL("https://zeelo.site"),
   icons: {
-    icon: "/images/logo-1x1-brand.png",
-    shortcut: "/images/logo-1x1-brand.png",
-    apple: "/images/logo-1x1-brand.png",
+    icon: "/images/logo-bg-brand-full.png",
+    shortcut: "/images/logo-bg-brand-full.png",
+    apple: "/images/logo-bg-brand-full.png",
   },
   title: "Lista de Enxoval de Casa Nova Completa com +196 Itens | Zeelo",
   description:
@@ -124,7 +124,7 @@ export default function RootLayout({
     <html
       lang="pt-BR"
       suppressHydrationWarning
-      className={`${josefinSans.variable} ${inter.variable} ${azeretMono.variable}`}
+      className={`${libreFranklin.variable} ${hindMadurai.variable} ${asap.variable} antialiased`}
     >
       <head>
         {/* Preconnect to third-party origins used by analytics / pixels / checkout */}
